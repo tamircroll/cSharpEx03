@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         {
             m_Producer = i_Producer;
             m_AirPressure = i_AirPressure;
-            m_MaxAirPressure = i_AirPressure;
+            m_MaxAirPressure = i_MaxAirPressure;
         }
 
         public void AddAir(float i_AirToAdd)
