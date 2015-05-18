@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Project1
+namespace Ex03.GarageLogic
 {
     public abstract class Wheel
     {

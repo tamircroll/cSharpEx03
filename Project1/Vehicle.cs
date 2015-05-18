@@ -1,10 +1,8 @@
-﻿namespace GarageLogic
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿using System.Collections.Generic;
 
-   public abstract class Vehicle
+namespace Project1
+{
+    public abstract class Vehicle
    {
        protected string m_Model;
        protected string m_PlateNumber;
