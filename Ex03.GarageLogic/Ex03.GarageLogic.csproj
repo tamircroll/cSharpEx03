@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>d2913033-b21f-4d7c-8594-4fe844720b81</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{A1DD20B0-D50D-4CC5-882A-15B9050EE977}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ex03.GarageLogic</RootNamespace>
     <AssemblyName>Ex03.GarageLogic</AssemblyName>
@@ -32,6 +32,25 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\ValueOutOfRangeException.cs" />
+    <Compile Include="Abstracts\Vehicle.cs" />
+    <Compile Include="VehicleCreator.cs" />
+    <Compile Include="Abstracts\Car.cs" />
+    <Compile Include="Abstracts\Electric.cs" />
+    <Compile Include="Not Abstracts Vehicles\ElectricCar.cs" />
+    <Compile Include="Fueled.cs" />
+    <Compile Include="Abstracts\Motorcycle.cs" />
+    <Compile Include="Not Abstracts Vehicles\Truck.cs" />
+    <Compile Include="Not Abstracts Vehicles\FueledCar.cs" />
+    <Compile Include="Wheel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
