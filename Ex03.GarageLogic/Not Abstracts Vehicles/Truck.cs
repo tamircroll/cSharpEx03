@@ -11,8 +11,8 @@
         protected bool m_DangerousMaterial;
         protected float m_CarryWeight;
 
-        public Truck(string i_Model, string i_PlateNumber, float i_MountOfFuel, List<Wheel> i_Wheels, bool i_DangerousMaterial, float i_CarryWeight)
-            : base(i_Model, i_PlateNumber, i_Wheels, k_NumOfWheels, k_MaxWheelAirPrusre)
+        public Truck(string i_Model, string i_PlateNumber, float i_MountOfFuel, Wheel i_Wheel, bool i_DangerousMaterial, float i_CarryWeight)
+            : base(i_Model, i_PlateNumber, i_Wheel, k_NumOfWheels, k_MaxWheelAirPrusre)
         {
             m_DangerousMaterial = i_DangerousMaterial;
             m_CarryWeight = i_CarryWeight;
@@ -41,9 +41,9 @@
             return r_FuelEngine.MountOfFuel;
         }
 
-        public void FuelUp(float i_ToFuel)
+        public void FuelUp(float i_ToFuel, Fueled.eFuelType i_FuelType)
         {
-            r_FuelEngine.FuelUp(i_ToFuel);
+            r_FuelEngine.FuelUp(i_ToFuel, i_FuelType);
         }
 
         public float MaxFuel()

@@ -12,14 +12,23 @@ namespace Ex03.GarageLogic
         private int m_NumOfWheels;
         private float m_MaxWheelAirPrusre;
 
-        public Vehicle(string i_Model, string i_PlateNumber, List<Wheel> i_wheels, int i_NumOfWheels, float i_MaxWheelAirPresure)
+        public Vehicle(string i_Model, string i_PlateNumber, Wheel i_wheel, int i_NumOfWheels, float i_MaxWheelAirPresure)
         {
             r_Model = i_Model;
             r_PlateNumber = i_PlateNumber;
-            SetIsElectric();
-            m_Wheels = i_wheels;
             m_NumOfWheels = i_NumOfWheels;
             m_MaxWheelAirPrusre = i_MaxWheelAirPresure;
+            SetIsElectric();
+            setWheels(i_wheel);
+        }
+
+        private void setWheels(Wheel i_Wheels)
+        {
+            m_Wheels = new List<Wheel>();
+            for (int i = 0; i < m_NumOfWheels; i++)
+            {
+                m_Wheels.Add(i_Wheels);
+            }
         }
 
         public string Model

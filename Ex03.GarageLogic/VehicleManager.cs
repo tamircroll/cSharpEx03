@@ -11,7 +11,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
     // לנסות להחזיק רשימה של מחלקות
 
-    public class VehicleCreator<T>
+    public class VehicleManager<T>
     {
        // private Type v = (new Vehicle()).GetType();
 

@@ -6,7 +6,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     using System;
 
-    public class GarageManager
+    public class Program
     {
         private const int k_insertVehicle = 1,
             k_ShowAllPlates = 2,
@@ -19,16 +19,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         public static void Main(string[] args)
         {
             Dictionary<string, CustomerCard> allVehicles = new Dictionary<string, CustomerCard>();
-
-
-
             Wheel wheel = new Wheel("hob", 4f, 7f);
-
-            List<Wheel> wheels = new List<Wheel>(){wheel, wheel};
-
-            FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 40, wheels);
-            ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 54, wheels);
-
+            FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 10, wheel);
+            ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 10, wheel);
             CustomerCard cust1 = new CustomerCard("Yossi", "054-9565986", car);
             CustomerCard cust2 = new CustomerCard("Tamir", "21324354", car2);
 
@@ -61,7 +54,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_FuelUp:
                     {
-                        GarageActionsExecuter.FuelUp(allVehicles);
+                        FuelVehiclesActionsExecuter.FuelUp(allVehicles);
                         break;
                     }
                     case k_ChargeBattery:
@@ -75,15 +68,6 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                 }
             }
-
-
-            //Wheel wheel = new Wheel("hob", 4f, 7f);
-            //FueledCar car = new FueledCar("Toyota", "59-985-68", Car.eColor.Green, Car.eNumOfDoors.Three, 40, null);
-            //ElectricCar car2 = new ElectricCar("Toyota", "59-985-68", Car.eColor.White, Car.eNumOfDoors.Four, 54, null);
-
-            //Console.WriteLine(car.ToString());
-            //Console.WriteLine(car2.ToString());
-            //Console.ReadLine();
         }
 
         public enum eState

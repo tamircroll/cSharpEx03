@@ -7,7 +7,7 @@ namespace Ex03.GarageLogic.Vehicles
         private const float k_MaxFuelTankInLiters = 35;
         private readonly Fueled r_FuelEngine;
 
-        public FueledCar(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, float i_MountOfFuel, List<Wheel> i_Wheel)
+        public FueledCar(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, float i_MountOfFuel, Wheel i_Wheel)
             : base(i_Model, i_PlateNumber, i_Color, i_NumOfDoors, i_Wheel)
         {
             r_FuelEngine = new Fueled(Fueled.eFuelType.Octan96, i_MountOfFuel, k_MaxFuelTankInLiters);
@@ -23,9 +23,9 @@ namespace Ex03.GarageLogic.Vehicles
             return r_FuelEngine.MountOfFuel;
         }
 
-        public void FuelUp(float i_ToFuel)
+        public void FuelUp(float i_ToFuel, Fueled.eFuelType i_FuelType)
         {
-            r_FuelEngine.FuelUp(i_ToFuel);
+            r_FuelEngine.FuelUp(i_ToFuel, i_FuelType);
         }
 
         public float MaxFuel()

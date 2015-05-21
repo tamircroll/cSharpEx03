@@ -10,8 +10,8 @@ namespace Ex03.GarageLogic.Vehicles
         protected eColor m_Color; 
         protected eNumOfDoors m_NumOfDoors;
 
-        public Car(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, List<Wheel> i_Wheels)
-            : base(i_Model, i_PlateNumber, i_Wheels, k_NumOfWheels, k_MaxWheelAirPrusre)
+        public Car(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, Wheel i_Wheel)
+            : base(i_Model, i_PlateNumber, i_Wheel, k_NumOfWheels, k_MaxWheelAirPrusre)
         {
             m_Color = i_Color;
             m_NumOfDoors = i_NumOfDoors;

@@ -9,8 +9,8 @@ namespace Ex03.GarageLogic.Vehicles
          private const float k_MaxBattery = 2.2f;
          private readonly Electric r_ElectricEngine;
 
-         public ElectricCar(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, float i_RemainBattery, List<Wheel> i_wheels)
-             : base(i_Model, i_PlateNumber, i_Color, i_NumOfDoors, i_wheels)
+         public ElectricCar(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, float i_RemainBattery, Wheel i_Wheel)
+             : base(i_Model, i_PlateNumber, i_Color, i_NumOfDoors, i_Wheel)
          {
              r_ElectricEngine = new Electric(i_RemainBattery, k_MaxBattery);
          }

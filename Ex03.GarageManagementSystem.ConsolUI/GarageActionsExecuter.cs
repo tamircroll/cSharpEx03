@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ex03.GarageLogic;
-using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -16,7 +14,8 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             }
         }
 
-        public static void ShowAllPlates(Dictionary<string, CustomerCard> i_AllVehicles, bool i_OnlyRepairing, bool i_OnlyRepaired, bool i_OnlyPaid)
+        public static void ShowAllPlates(Dictionary<string, CustomerCard> i_AllVehicles, bool i_OnlyRepairing,
+            bool i_OnlyRepaired, bool i_OnlyPaid)
         {
             bool notAllFalse = i_OnlyRepairing || i_OnlyRepaired || i_OnlyPaid;
             Ex02.ConsoleUtils.Screen.Clear();
@@ -58,35 +57,20 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 Console.ReadLine();
             }
         }
-
-        public static void FuelUp(Dictionary<string, CustomerCard> i_AllVehicles)
-        {
-            string plate = ConsoleHandler.GetPlateNumber();
-            Fueled.eFuelType fuel = ConsoleHandler.GetFuel();
-            float i_MountToFill = ConsoleHandler.GetFuelMountToFill();
-            CustomerCard customerCard;
-            bool isInGarage = i_AllVehicles.TryGetValue(plate, out customerCard);
-
-            if (isInGarage)
-            {
-                if (!(bool)customerCard.Vehicle.IsElectric)
-                {
-                    Console.Write(customerCard.Vehicle.IsElectric);
-                    Console.ReadLine();
-
-                    foreach (var vehicle in VehicleCreator<Vehicle>.SupportedVehicles)
-                    {
-                        if (customerCard.Vehicle is vehicle)
-                        {
-                        }
-                    }
-                    
-                }
-                else
-                {
-                    //TODO: Throw Exception
-                }
-            }
-        }
     }
 }
+
+
+//    foreach (var vehicle in VehicleManager<Vehicle>.SupportedVehicles)
+//    {
+//        if (curVehicle.GetType() == vehicle)
+//        {
+//            Console.WriteLine(vehicle.Name + " GGGGGGGOOOOOOOOOOOODDDDDDDDDDDDDDD");
+//            Console.ReadLine();
+//        }
+//    }
+//}
+//else
+//{
+//    //TODO: Throw Exception
+//}

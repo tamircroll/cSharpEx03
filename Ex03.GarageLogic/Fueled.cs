@@ -1,10 +1,6 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace Ex03.GarageLogic.Vehicles
+﻿namespace Ex03.GarageLogic.Vehicles
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class Fueled
     {
@@ -34,8 +30,13 @@ namespace Ex03.GarageLogic.Vehicles
             return MountOfFuel / MaxFuel;
         }
 
-        public void FuelUp(float i_ToFuel)
+        public void FuelUp(float i_ToFuel, eFuelType i_FuelType)
         {
+            if (FuelType != i_FuelType)
+            {
+                throw new ArgumentNullException("Wrong fuel Type!");
+            }
+
             float fuelAfterFueling = m_MountOfFuel + i_ToFuel;
             if (fuelAfterFueling <= r_MaxFuel && fuelAfterFueling >= 0)
             {

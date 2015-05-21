@@ -46,8 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleHandler.cs" />
+    <Compile Include="FuelVehiclesActionsExecuter.cs" />
     <Compile Include="GarageActionsExecuter.cs" />
-    <Compile Include="GarageManager.cs">
+    <Compile Include="Program.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="CustomerCard.cs" />
