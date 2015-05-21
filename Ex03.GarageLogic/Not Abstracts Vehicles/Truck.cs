@@ -35,11 +35,6 @@
         {
             return r_FuelEngine.FuelType;
         }
-
-        public int NumOfWheels
-        {
-            get { return k_NumOfWheels; }
-        }
         
         public float MountOfFuel()
         {
@@ -56,7 +51,7 @@
             return r_FuelEngine.MaxFuel;
         }
 
-        public override float PrecentOfEnergyLeft()
+        public override float PercentOfEnergyLeft()
         {
             return r_FuelEngine.PrecentOfEnergyLeft();
         }

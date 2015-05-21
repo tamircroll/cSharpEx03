@@ -19,9 +19,9 @@ namespace Ex03.GarageLogic
         {
             float airAfterAddition = i_AirToAdd + m_AirPressure;
 
-            if (airAfterAddition > m_MaxAirPressure)
+            if (airAfterAddition > m_MaxAirPressure || airAfterAddition < 0)
             {
-                throw new ValueOutOfRangeException(airAfterAddition, m_MaxAirPressure);
+                throw new ValueOutOfRangeException(airAfterAddition, m_MaxAirPressure, 0);
             }
 
             m_AirPressure = airAfterAddition;

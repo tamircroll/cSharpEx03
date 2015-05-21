@@ -7,6 +7,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     using System.Collections.Generic;
     using System.Text;
 
+
+    // לנסות להחזיק רשימה של מחלקות
+
     public class VehicleCreator
     {
         private List<eSupportedVehicles> m_SupportedVehicles = new List<eSupportedVehicles>

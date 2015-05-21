@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic.Vehicles
              r_ElectricEngine.ChargeBattery(i_ToCharge);
          }
 
-         public override float PrecentOfEnergyLeft()
+         public override float PercentOfEnergyLeft()
          {
              return RemainBattery()/MaxBattery();
          }

@@ -45,9 +45,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsolHandler.cs" />
-    <Compile Include="GarageManager.cs" />
-    <Compile Include="VehicleInGarage.cs" />
+    <Compile Include="ConsoleHandler.cs" />
+    <Compile Include="GarageActionsExecuter.cs" />
+    <Compile Include="GarageManager.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomerCard.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

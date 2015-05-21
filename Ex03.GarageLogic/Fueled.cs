@@ -36,14 +36,14 @@ namespace Ex03.GarageLogic.Vehicles
 
         public void FuelUp(float i_ToFuel)
         {
-            float FuelAfterFueling = m_MountOfFuel + i_ToFuel;
-            if (FuelAfterFueling <= r_MaxFuel)
+            float fuelAfterFueling = m_MountOfFuel + i_ToFuel;
+            if (fuelAfterFueling <= r_MaxFuel && fuelAfterFueling >= 0)
             {
-                m_MountOfFuel = FuelAfterFueling;
+                m_MountOfFuel = fuelAfterFueling;
             }
             else
             {
-                throw new ValueOutOfRangeException(FuelAfterFueling, r_MaxFuel);
+                throw new ValueOutOfRangeException(fuelAfterFueling, r_MaxFuel, 0);
             }
         }
 
@@ -63,12 +63,12 @@ Max fuel: {2}",
               MaxFuel);
         }
 
-        public enum eFuelType
+        public enum eFuelType : byte
         {
-            Soler,
-            Octan95,
-            Octan96,
-            Octan98
+            Soler = 0,
+            Octan95 = 1,
+            Octan96 = 2,
+            Octan98 = 3
         }
     }
 }

@@ -19,13 +19,14 @@
         public void ChargeBattery(float i_ToCharge)
         {
             float batteryAfterCharge = m_RemainBattery + i_ToCharge;
-            if (m_RemainBattery + i_ToCharge <= r_MaxBattery)
+
+            if (batteryAfterCharge <= r_MaxBattery && batteryAfterCharge >= 0 )
             {
                 m_RemainBattery = batteryAfterCharge;
             }
             else
             {
-                throw new ValueOutOfRangeException(batteryAfterCharge, r_MaxBattery);
+                throw new ValueOutOfRangeException(batteryAfterCharge, r_MaxBattery, 0);
             }
         }
 

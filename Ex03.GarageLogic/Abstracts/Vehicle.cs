@@ -65,6 +65,10 @@ namespace Ex03.GarageLogic
                     isEqual = true;
                 }
             }
+            else
+            {
+                throw new ArgumentException("The compared Object is not of type Vehicle");
+            }
 
             return isEqual;
         }
@@ -74,7 +78,7 @@ namespace Ex03.GarageLogic
             return PlateNumber.GetHashCode();
         }
 
-        public abstract float PrecentOfEnergyLeft();
+        public abstract float PercentOfEnergyLeft();
 
         protected abstract void SetIsElectric();
 
@@ -98,10 +102,10 @@ Wheel {1}:
             return string.Format(
 @"Plate: {0}
 Model: {1}{2}
-Precent of energy left: {3}",
+Percent of energy left: {3}",
                             r_PlateNumber,
                             Model, wheelsInfo,
-                            PrecentOfEnergyLeft());
+                            PercentOfEnergyLeft());
         }
     }
 }
