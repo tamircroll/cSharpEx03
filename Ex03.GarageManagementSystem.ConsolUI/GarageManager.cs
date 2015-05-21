@@ -26,8 +26,8 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
             List<Wheel> wheels = new List<Wheel>(){wheel, wheel};
 
-            FueledCar car = new FueledCar("Toyota", "59-985-68", Car.eColor.Green, Car.eNumOfDoors.Three, 40, wheels);
-            ElectricCar car2 = new ElectricCar("Toyota", "51-415-68", Car.eColor.White, Car.eNumOfDoors.Four, 54, wheels);
+            FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 40, wheels);
+            ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 54, wheels);
 
             CustomerCard cust1 = new CustomerCard("Yossi", "054-9565986", car);
             CustomerCard cust2 = new CustomerCard("Tamir", "21324354", car2);
@@ -61,7 +61,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_FuelUp:
                     {
-                        GarageActionsExecuter.FuelUp();
+                        GarageActionsExecuter.FuelUp(allVehicles);
                         break;
                     }
                     case k_ChargeBattery:

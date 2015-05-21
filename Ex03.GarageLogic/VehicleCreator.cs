@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Ex03.GarageLogic;
+using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -10,19 +11,26 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
     // לנסות להחזיק רשימה של מחלקות
 
-    public class VehicleCreator
+    public class VehicleCreator<T>
     {
-        private List<eSupportedVehicles> m_SupportedVehicles = new List<eSupportedVehicles>
+       // private Type v = (new Vehicle()).GetType();
+
+        public static List<Type> m_SupportedVehicles = new List<Type>
         {
-            eSupportedVehicles.ElectricCar,
-            eSupportedVehicles.FuledCar,
-            eSupportedVehicles.ElectricTrack,
-            eSupportedVehicles.FuledTrack,
-            eSupportedVehicles.ElectricMotorcycle,
-            eSupportedVehicles.FuledMotorcycle
+            typeof(ElectricCar),
+            typeof(FueledCar),
+            typeof(Truck),
+//            typeof(ElectricMotorcycle),
+//            typeof(FuledMotorcycle)
+
+            //eSupportedVehicles.ElectricCar,
+            //eSupportedVehicles.FuledCar,
+            //eSupportedVehicles.Track,
+            //eSupportedVehicles.ElectricMotorcycle,
+            //eSupportedVehicles.FuledMotorcycle
         };
 
-        public List<eSupportedVehicles> SupportedVehicles
+        public static List<Type> SupportedVehicles
         {
             get { return m_SupportedVehicles; }
         }   
@@ -32,8 +40,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         ElectricCar,
         FuledCar,
-        ElectricTrack,
-        FuledTrack,
+        Track,
         ElectricMotorcycle,
         FuledMotorcycle
     }

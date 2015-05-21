@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ex03.GarageLogic;
 using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
@@ -68,7 +69,23 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
             if (isInGarage)
             {
-                customerCard.Vehicle;
+                if (!(bool)customerCard.Vehicle.IsElectric)
+                {
+                    Console.Write(customerCard.Vehicle.IsElectric);
+                    Console.ReadLine();
+
+                    foreach (var vehicle in VehicleCreator<Vehicle>.SupportedVehicles)
+                    {
+                        if (customerCard.Vehicle is vehicle)
+                        {
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    //TODO: Throw Exception
+                }
             }
         }
     }
