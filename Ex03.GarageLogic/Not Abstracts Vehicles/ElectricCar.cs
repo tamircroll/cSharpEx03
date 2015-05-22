@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace Ex03.GarageLogic.Vehicles
+﻿namespace Ex03.GarageLogic.Vehicles
 {
      public class ElectricCar : Car
      {
          private const float k_MaxBattery = 2.2f;
          private readonly Electric r_ElectricEngine;
 
-         public ElectricCar(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, float i_RemainBatteryTime, Wheel i_Wheel)
-             : base(i_Model, i_PlateNumber, i_Color, i_NumOfDoors, i_Wheel)
+         public ElectricCar(string i_Model, string i_PlateNumber, eColor i_Color, eNumOfDoors i_NumOfDoors, Wheel i_Wheel, float i_RemainBatteryTime)
+             : base(i_Model, i_PlateNumber, i_Wheel, i_Color, i_NumOfDoors)
          {
              r_ElectricEngine = new Electric(i_RemainBatteryTime, k_MaxBattery);
          }

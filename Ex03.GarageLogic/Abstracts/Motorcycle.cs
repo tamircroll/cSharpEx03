@@ -1,15 +1,15 @@
 ﻿namespace Ex03.GarageLogic.Vehicles
 {
-    using System.Collections.Generic;
 
     public abstract class Motorcycle : Vehicle
     {
+        private const int k_NumOfWheels = 2;
         protected eLicense m_License;
         protected int m_Engine;
 
         public Motorcycle(string i_Model, string i_PlateNumber, Wheel i_Wheel, eLicense i_License, int i_Engine,
-            int i_NumOfWheels, float i_MaxWheelAirPresure) 
-            : base(i_Model, i_PlateNumber, i_Wheel, i_NumOfWheels, i_MaxWheelAirPresure)
+            float i_MaxWheelAirPresure)
+            : base(i_Model, i_PlateNumber, i_Wheel, k_NumOfWheels, i_MaxWheelAirPresure)
         {
             m_License = i_License;
             m_Engine = i_Engine;

@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Ex03.GarageLogic.Vehicles;
 
-namespace Ex03.GarageLogic.Vehicles
+namespace Ex03.GarageLogic.Not_Abstracts_Vehicles
 {
-    public class FueledCar : Car
+    public class FueledMotorcycle : Motorcycle
     {
         private const float k_MaxFuelTankInLiters = 35;
         private readonly Fueled r_FuelEngine;
 
-        public FueledCar(string i_Model, string i_PlateNumber, eColor i_Color, Wheel i_Wheel, eNumOfDoors i_NumOfDoors, float i_MountOfFuel)
-            : base(i_Model, i_PlateNumber, i_Wheel, i_Color, i_NumOfDoors)
+        public FueledMotorcycle(string i_Model, string i_PlateNumber, Wheel i_Wheel, eLicense i_License, int i_Engine,
+            float i_MountOfFuel, float i_MaxWheelAirPresure)
+            : base(i_Model, i_PlateNumber, i_Wheel, i_License, i_Engine, i_MaxWheelAirPresure)
         {
             r_FuelEngine = new Fueled(Fueled.eFuelType.Octan96, i_MountOfFuel, k_MaxFuelTankInLiters);
         }
@@ -48,8 +49,8 @@ namespace Ex03.GarageLogic.Vehicles
             return string.Format(
 @"{0}
 {1}
-", 
- base.ToString(), 
+",
+ base.ToString(),
  r_FuelEngine);
         }
     }
