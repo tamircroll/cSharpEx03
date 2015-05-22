@@ -28,6 +28,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             {
                 if (notAllFalse)
                 {
+
                 }
                 else
                 {

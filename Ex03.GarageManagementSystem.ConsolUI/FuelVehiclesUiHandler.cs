@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Configuration;
 using Ex03.GarageLogic.Logic;
 using Ex03.GarageLogic.Vehicles;
 
@@ -7,25 +8,26 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public class FuelVehiclesUiHandler
     {
-
-
-        public void UiFuelUp(Dictionary<string, CustomerCard> i_AllVehicles)
+        public void UiFuelUp()
         {
+            String plateNumber;
+            float mountToFill;
+            Fueled.eFuelType fuelType;
+
             while (true)
             {
                 int fuelTypeIndex = 1;
-                GarageLogicHandler logic = new GarageLogicHandler();
+
+                Ex02.ConsoleUtils.Screen.Clear();
+                Console.WriteLine("Please enter required plate numer");
+                plateNumber = Console.ReadLine();
                 try
                 {
-                    Console.WriteLine("Please enter required plate numer");
-                    logic.PlateNumber = Console.ReadLine();
-
-                    Array allFuelTypes = logic.AllFuelTypes();
-                    
+                    Array allFuelTypes = GarageLogicHandler.AllFuelTypes();
                     Console.WriteLine("Please enter required fuel type");
-                    foreach (Fueled.eFuelType fuelType in allFuelTypes)
+                    foreach (Fueled.eFuelType type in allFuelTypes)
                     {
-                        Console.WriteLine("{0}. {1}", fuelTypeIndex++, fuelType);
+                        Console.WriteLine("{0}. {1}", fuelTypeIndex++, type);
                     }
 
                     int fuelTypeValue;
@@ -37,21 +39,38 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     else
                     {
-                        fuelTypeValue = -1;
+                        throw new ArgumentException("The Entered fuel type value is not a number");
                     }
 
-                    logic.FuelTypeToAdd = fuelTypeValue;
+                    fuelType = GarageLogicHandler.IntToFuelType(fuelTypeValue);
 
+                    Console.WriteLine("Please enter how many liters of fuel you would like to fill:");
+                    string litersToFillStr = Console.ReadLine();
 
+                    isNumber = float.TryParse(litersToFillStr, out mountToFill);
+                    if (!isNumber)
+                    {
+                        throw new ArgumentException("The Entered mount of liters is not a number");
+                    }
+
+                    GarageLogicHandler.fillFuel(plateNumber, mountToFill, fuelType);
+                    Console.WriteLine("Fuel was successfully filled");
+                    Console.ReadLine();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(string.Format(
+                    string msg = e.Message;
+
+                    if (e.InnerException!= null)
+                    {
+                        msg = e.InnerException.Message;
+                    }
+                    Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.",e.Message));
+Please press 'B' to go back to menu or any other thing to try again.", msg);
                     string choice = Console.ReadLine().ToLower();
 
-                    if (choice == 'b')
+                    if (choice == "b")
                     {
                         break;
                     }

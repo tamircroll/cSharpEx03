@@ -6,7 +6,7 @@ using Ex03.GarageManagementSystem.ConsolUI;
 
 namespace Ex03.GarageLogic.Logic
 {
-    public static class GarageLogicHandler
+    public class GarageLogicHandler
     {
         private static string k_FillFuelMethos = "FuelUp";
         private static readonly Dictionary<string, CustomerCard> sr_AllVehicles = new Dictionary<string, CustomerCard>();
@@ -48,19 +48,36 @@ namespace Ex03.GarageLogic.Logic
         {
             Vehicle curVehicle = getVehicle(i_Plate);
             MethodInfo[] methods = curVehicle.GetType().GetMethods();
+            bool wasFuled = false; 
 
             foreach (MethodInfo method in methods)
             {
                 if (method.Name == k_FillFuelMethos)
                 {
-                    method.Invoke(i_ToFill, new object[]{i_FuelType});
+                    method.Invoke(curVehicle, new object[]{i_ToFill, i_FuelType});
+                    wasFuled = true;
                 }
+            }
+
+            if (!wasFuled)
+            {
+                throw new ArgumentException("This Car does not support fuel funcions");
             }
         }
 
         public static Array AllFuelTypes()
         {
             return Enum.GetValues(typeof(Fueled.eFuelType));
+        }
+
+        public static Fueled.eFuelType IntToFuelType(int i_FuelTypeInt)
+        {
+            if (i_FuelTypeInt < 0 || i_FuelTypeInt >= Enum.GetValues(typeof(Fueled.eFuelType)).Length)
+            {
+                throw new ValueOutOfRangeException(i_FuelTypeInt ,0, Enum.GetValues(typeof (Fueled.eFuelType)).Length);
+            }
+
+            return (Fueled.eFuelType) i_FuelTypeInt;
         }
     }
 }

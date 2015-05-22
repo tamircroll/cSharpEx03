@@ -53,7 +53,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_FuelUp:
                     {
-                        FuelVehiclesUiHandler.UiFuelUp(allVehicles);
+                        new FuelVehiclesUiHandler().UiFuelUp();
                         break;
                     }
                     case k_ChargeBattery:

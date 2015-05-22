@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Ex03.GarageLogic.Vehicles
+﻿namespace Ex03.GarageLogic.Vehicles
 {
     public abstract class Car : Vehicle
     {
