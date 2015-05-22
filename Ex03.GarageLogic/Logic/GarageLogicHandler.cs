@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 using Ex03.GarageLogic.Vehicles;
 using Ex03.GarageManagementSystem.ConsolUI;
 
@@ -100,6 +101,29 @@ namespace Ex03.GarageLogic.Logic
             {
                 throw new ArgumentException("This Car does not support electric funcions");
             }
+        }
+
+        public static string showPlates(bool i_ToShowRepairing, bool i_ToShowRepaired, bool i_ToShowPaid)
+        {
+            StringBuilder allPlates = new StringBuilder("");
+
+            foreach (KeyValuePair<string, CustomerCard> card in sr_AllVehicles)
+            {
+                if (card.Value.State == CustomerCard.eState.Repairing && i_ToShowRepairing)
+                {
+                    allPlates.Append(string.Format("{0}{1}", card.Key, System.Environment.NewLine));
+                }
+                else if (card.Value.State == CustomerCard.eState.Repaired && i_ToShowRepaired)
+                {
+                    allPlates.Append(string.Format("{0}{1}", card.Key, System.Environment.NewLine));
+                }
+                else if (card.Value.State == CustomerCard.eState.Paid && i_ToShowPaid)
+                {
+                    allPlates.Append(string.Format("{0}{1}", card.Key, System.Environment.NewLine));
+                }
+            }
+
+            return allPlates.ToString();
         }
 
         public static string ShowAllVehicleDetails(string i_Plate)

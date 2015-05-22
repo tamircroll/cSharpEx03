@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ex03.GarageLogic;
 using Ex03.GarageLogic.Logic;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
@@ -8,37 +9,66 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void InsertNewCar(Dictionary<string, CustomerCard> i_AllVehicles)
         {
-            while (true)
-            {
-                string plate = ConsoleHandler.GetPlateNumber();
-            }
+            //TODO!!!!
         }
 
-        public static void ShowAllPlates(Dictionary<string, CustomerCard> i_AllVehicles, bool i_OnlyRepairing,
-            bool i_OnlyRepaired, bool i_OnlyPaid)
+        public static void ShowAllPlates()
         {
-            bool notAllFalse = i_OnlyRepairing || i_OnlyRepaired || i_OnlyPaid;
-            Ex02.ConsoleUtils.Screen.Clear();
-
-            if ((i_OnlyRepairing && i_OnlyRepaired) || (i_OnlyRepaired && i_OnlyPaid) || (i_OnlyRepairing && i_OnlyPaid))
+            while(true)
             {
-                throw new ArgumentException("Only one of the conditions can be true");
-            }
+                int filterBy;
 
-            foreach (var vehicle in i_AllVehicles)
-            {
-                if (notAllFalse)
+                Ex02.ConsoleUtils.Screen.Clear();
+                try
                 {
+                    bool toShowRepairing, toShowRepaired, toShowPaid;
+                    Console.WriteLine(
+@"Please Choose a filter:
+1. No filter
+2. Repairing
+3. Repaired
+4. Paid");
+                    string filterByStr = Console.ReadLine();
+                    bool isNumber = int.TryParse(filterByStr, out filterBy);
 
+                    if (!isNumber)
+                    {
+                        throw new ArgumentException("The input is not a number");
+                    }
+
+                    if (filterBy < 1 || filterBy > 4)
+                    {
+                        throw new ValueOutOfRangeException(filterBy, 4, 1);
+                    }
+
+                    toShowRepairing = filterBy == 1 || filterBy == 2;
+                    toShowRepaired = filterBy == 1 || filterBy == 3;
+                    toShowPaid = filterBy == 1 || filterBy == 4;
+
+                    Ex02.ConsoleUtils.Screen.Clear();
+                    Console.WriteLine(GarageLogicHandler.showPlates(toShowRepairing, toShowRepaired, toShowPaid));
+                    Console.ReadLine();
+                    break;
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine(vehicle.Value.ToString());
-                    Console.WriteLine();
+                    string msg = e.Message;
+
+                    if (e.InnerException != null)
+                    {
+                        msg = e.InnerException.Message;
+                    }
+                    Console.WriteLine(
+                        @"{0}.
+Please press 'B' to go back to menu or any other thing to try again.", msg);
+                    string choice = Console.ReadLine().ToLower();
+
+                    if (choice == "b")
+                    {
+                        break;
+                    }
                 }
             }
-
-            Console.ReadLine();
         }
 
         public static void ShowAllDetails()

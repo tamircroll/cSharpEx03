@@ -26,7 +26,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
             GarageLogicHandler.InsertVehicle(car, "", "");
             GarageLogicHandler.InsertVehicle(car2, "Tamir", "21324354");
-
+            
             while (true)
             {
                 int choise = ChooseAction();
@@ -40,7 +40,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_ShowAllPlates:
                     {
-                        GarageActionsExecuter.ShowAllPlates(allVehicles, false, false, false);
+                        GarageActionsExecuter.ShowAllPlates();
                         break;
                     }
                     case k_ChangeState:
@@ -74,7 +74,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         {
             Ex02.ConsoleUtils.Screen.Clear();
             string choiseStr, msg = "Please choose the action you like to perform and press Enter:";
-            char choise = '0';
+            char choise;
 
             while (true)
             {
