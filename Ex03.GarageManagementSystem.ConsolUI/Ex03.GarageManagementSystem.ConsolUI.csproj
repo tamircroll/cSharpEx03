@@ -46,15 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleHandler.cs" />
-    <Compile Include="ElectricVehiclesActionsExecuter.cs" />
+    <Compile Include="ElectricVehiclesUiHandler.cs" />
     <Compile Include="FuelVehiclesUiHandler.cs" />
     <Compile Include="GarageActionsExecuter.cs" />
     <Compile Include="Program.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

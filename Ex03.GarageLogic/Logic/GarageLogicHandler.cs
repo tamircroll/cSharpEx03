@@ -9,6 +9,7 @@ namespace Ex03.GarageLogic.Logic
     public class GarageLogicHandler
     {
         private static string k_FillFuelMethos = "FuelUp";
+        private static string k_ChargeBatteryMethos = "ChargeBattery";
         private static readonly Dictionary<string, CustomerCard> sr_AllVehicles = new Dictionary<string, CustomerCard>();
 
         public static CustomerCard getCustomerCard(string i_Key)
@@ -78,6 +79,27 @@ namespace Ex03.GarageLogic.Logic
             }
 
             return (Fueled.eFuelType) i_FuelTypeInt;
+        }
+
+        public static void ChargeBattery(string i_Plate, float i_ToFill)
+        {
+            Vehicle curVehicle = getVehicle(i_Plate);
+            MethodInfo[] methods = curVehicle.GetType().GetMethods();
+            bool wasCharged = false;
+
+            foreach (MethodInfo method in methods)
+            {
+                if (method.Name == k_ChargeBatteryMethos)
+                {
+                    method.Invoke(curVehicle, new object[] { i_ToFill });
+                    wasCharged = true;
+                }
+            }
+
+            if (!wasCharged)
+            {
+                throw new ArgumentException("This Car does not support electric funcions");
+            }
         }
     }
 }

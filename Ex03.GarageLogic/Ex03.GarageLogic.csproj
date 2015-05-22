@@ -39,11 +39,10 @@
     <Compile Include="Exceptions\ValueOutOfRangeException.cs" />
     <Compile Include="Abstracts\Vehicle.cs" />
     <Compile Include="Logic\CustomerCard.cs" />
-    <Compile Include="Logic\FuelVehicleLogicHandler.cs" />
     <Compile Include="Logic\GarageLogicHandler.cs" />
     <Compile Include="VehicleManager.cs" />
     <Compile Include="Abstracts\Car.cs" />
-    <Compile Include="Abstracts\Electric.cs" />
+    <Compile Include="Electric.cs" />
     <Compile Include="Not Abstracts Vehicles\ElectricCar.cs" />
     <Compile Include="Fueled.cs" />
     <Compile Include="Abstracts\Motorcycle.cs" />

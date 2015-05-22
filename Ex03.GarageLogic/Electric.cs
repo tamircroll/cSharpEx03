@@ -1,4 +1,6 @@
-﻿namespace Ex03.GarageLogic.Vehicles
+﻿using System;
+
+namespace Ex03.GarageLogic.Vehicles
 {
     public class Electric
     {
@@ -18,7 +20,12 @@
 
         public void ChargeBattery(float i_ToCharge)
         {
-            float batteryAfterCharge = m_RemainBattery + i_ToCharge;
+            float batteryAfterCharge = m_RemainBattery + (i_ToCharge/60);
+
+            if (i_ToCharge <= 0)
+            {
+                throw new ArgumentException("The charging value has to be bigger then 0");
+            }
 
             if (batteryAfterCharge <= r_MaxBattery && batteryAfterCharge >= 0 )
             {
