@@ -35,16 +35,17 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     case k_insertVehicle:
                     {
-                        GarageActionsExecuter.InsertNewCar(allVehicles);
+                        GarageUiHandler.InsertNewCar(allVehicles);
                         break;
                     }
                     case k_ShowAllPlates:
                     {
-                        GarageActionsExecuter.ShowAllPlates();
+                        GarageUiHandler.ShowAllPlates();
                         break;
                     }
                     case k_ChangeState:
                     {
+                        GarageUiHandler.ChangeStatus();
                         break;
                     }
                     case k_FillWheels:
@@ -63,7 +64,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_ShowVehicleDetails:
                     {
-                        GarageActionsExecuter.ShowAllDetails();
+                        GarageUiHandler.ShowAllDetails();
                         break;
                     }
                 }

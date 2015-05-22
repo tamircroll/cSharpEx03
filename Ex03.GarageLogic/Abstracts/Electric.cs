@@ -5,22 +5,26 @@ namespace Ex03.GarageLogic.Vehicles
     public class Electric
     {
         private readonly float r_MaxBattery;
-        private float m_RemainBattery;
+        private float m_RemainBatteryTime;
 
-        public Electric(float i_RemainBattery, float i_MaxBattery)
+        public Electric(float i_RemainBatteryTime, float i_MaxBattery)
         {
-            m_RemainBattery = i_RemainBattery;
+            if (i_RemainBatteryTime > i_MaxBattery)
+            {
+                throw new ValueOutOfRangeException(i_RemainBatteryTime, i_MaxBattery, 0);
+            }
+            m_RemainBatteryTime = i_RemainBatteryTime;
             r_MaxBattery = i_MaxBattery;
         }
 
-        public float RemainBattery
+        public float RemainBatteryTime
         {
-            get { return m_RemainBattery; }
+            get { return m_RemainBatteryTime; }
         }
 
         public void ChargeBattery(float i_ToCharge)
         {
-            float batteryAfterCharge = m_RemainBattery + (i_ToCharge/60);
+            float batteryAfterCharge = m_RemainBatteryTime + (i_ToCharge/60);
 
             if (i_ToCharge <= 0)
             {
@@ -29,7 +33,7 @@ namespace Ex03.GarageLogic.Vehicles
 
             if (batteryAfterCharge <= r_MaxBattery && batteryAfterCharge >= 0 )
             {
-                m_RemainBattery = batteryAfterCharge;
+                m_RemainBatteryTime = batteryAfterCharge;
             }
             else
             {
@@ -47,7 +51,7 @@ namespace Ex03.GarageLogic.Vehicles
             return string.Format(
 @"remain battery: {0}
 Max Battery: {1}",
-                 RemainBattery,
+                 RemainBatteryTime,
                  MaxBattery);
         }
     }

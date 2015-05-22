@@ -42,13 +42,13 @@
     <Compile Include="Logic\GarageLogicHandler.cs" />
     <Compile Include="VehicleManager.cs" />
     <Compile Include="Abstracts\Car.cs" />
-    <Compile Include="Electric.cs" />
+    <Compile Include="Abstracts\Electric.cs" />
     <Compile Include="Not Abstracts Vehicles\ElectricCar.cs" />
-    <Compile Include="Fueled.cs" />
+    <Compile Include="Abstracts\Fueled.cs" />
     <Compile Include="Abstracts\Motorcycle.cs" />
     <Compile Include="Not Abstracts Vehicles\Truck.cs" />
     <Compile Include="Not Abstracts Vehicles\FueledCar.cs" />
-    <Compile Include="Wheel.cs" />
+    <Compile Include="Abstracts\Wheel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -1,4 +1,5 @@
 ﻿using Ex03.GarageLogic;
+using Ex03.GarageLogic.Logic;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -8,7 +9,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         private readonly string r_Owners;
         private readonly string r_Phone;
-        private eState m_State;
+        private eStatus m_Status;
         private Vehicle m_Vehicle;
 
         public CustomerCard(string i_Owners, string i_Phone, Vehicle i_Vehicle)
@@ -16,7 +17,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             r_Owners = i_Owners;
             r_Phone = i_Phone;
             m_Vehicle = i_Vehicle;
-            m_State = eState.Repairing;
+            m_Status = eStatus.Repairing;
         }
 
         public Vehicle Vehicle
@@ -24,10 +25,10 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             get { return m_Vehicle; }
         }
 
-        public eState State
+        public eStatus Status
         {
-            get { return m_State; }
-            set { m_State = value; }
+            get { return m_Status; }
+            set { m_Status = value; }
         }
 
         public string Owners
@@ -45,16 +46,15 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             return String.Format(
 @"{0}Owners: {1}
 Phone: {2}
-State: {3}
+Status: {3}
 ", 
            Vehicle,
            Owners,
            Phone,
-           State);
+           Status);
         }
 
-
-        public enum eState
+        public enum eStatus
         {
             Repairing = 0,
             Repaired = 1,

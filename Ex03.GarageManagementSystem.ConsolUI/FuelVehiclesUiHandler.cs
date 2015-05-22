@@ -53,7 +53,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                         throw new ArgumentException("The Entered mount of liters is not a number");
                     }
 
-                    GarageLogicHandler.fillFuel(plateNumber, mountToFill, fuelType);
+                    GarageLogicHandler.FillFuel(plateNumber, mountToFill, fuelType);
                     Console.WriteLine("Fuel was successfully filled");
                     Console.ReadLine();
                 }

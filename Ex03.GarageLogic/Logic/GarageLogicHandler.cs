@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic.Logic
         private static string k_ChargeBatteryMethos = "ChargeBattery";
         private static readonly Dictionary<string, CustomerCard> sr_AllVehicles = new Dictionary<string, CustomerCard>();
 
-        public static CustomerCard getCustomerCard(string i_Key)
+        public static CustomerCard GetCustomerCard(string i_Key)
         {
             CustomerCard customerCard;
             bool isInGarage = sr_AllVehicles.TryGetValue(i_Key, out customerCard);
@@ -26,9 +26,9 @@ namespace Ex03.GarageLogic.Logic
             return customerCard;
         }
 
-        public static Vehicle getVehicle(string i_Plate)
+        public static Vehicle GetVehicle(string i_Plate)
         {
-            return getCustomerCard(i_Plate).Vehicle;
+            return GetCustomerCard(i_Plate).Vehicle;
         }
 
         public static string InsertVehicle(Vehicle vehicle, string i_Owners, string Phone)
@@ -37,7 +37,7 @@ namespace Ex03.GarageLogic.Logic
 
             if (sr_AllVehicles.ContainsKey(vehicle.PlateNumber))
             {
-                getCustomerCard(vehicle.PlateNumber).State = CustomerCard.eState.Repairing;
+                GetCustomerCard(vehicle.PlateNumber).State = CustomerCard.eState.Repairing;
                 msg = String.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
             }
             
@@ -46,9 +46,9 @@ namespace Ex03.GarageLogic.Logic
             return msg;
         }
 
-        public static void fillFuel(string i_Plate, float i_ToFill, Fueled.eFuelType i_FuelType)
+        public static void FillFuel(string i_Plate, float i_ToFill, Fueled.eFuelType i_FuelType)
         {
-            Vehicle curVehicle = getVehicle(i_Plate);
+            Vehicle curVehicle = GetVehicle(i_Plate);
             MethodInfo[] methods = curVehicle.GetType().GetMethods();
             bool wasFuled = false; 
 
@@ -82,9 +82,19 @@ namespace Ex03.GarageLogic.Logic
             return (Fueled.eFuelType) i_FuelTypeInt;
         }
 
+        public static CustomerCard.eState IntToStateType(int i_StateTypeInt)
+        {
+            if (i_StateTypeInt < 0 || i_StateTypeInt >= Enum.GetValues(typeof(CustomerCard.eState)).Length)
+            {
+                throw new ValueOutOfRangeException(i_StateTypeInt, 0, Enum.GetValues(typeof(CustomerCard.eState)).Length);
+            }
+
+            return (CustomerCard.eState)i_StateTypeInt;
+        }
+
         public static void ChargeBattery(string i_Plate, float i_ToFill)
         {
-            Vehicle curVehicle = getVehicle(i_Plate);
+            Vehicle curVehicle = GetVehicle(i_Plate);
             MethodInfo[] methods = curVehicle.GetType().GetMethods();
             bool wasCharged = false;
 
@@ -126,16 +136,33 @@ namespace Ex03.GarageLogic.Logic
             return allPlates.ToString();
         }
 
-        public static string ShowAllVehicleDetails(string i_Plate)
+        public static void ChangeStatus(string i_PlatNumber, CustomerCard.eState i_NewState)
         {
-            return getCustomerCard(i_Plate).ToString();
+            CustomerCard curCard= GetCustomerCard(i_PlatNumber);
+            curCard.State = i_NewState;
         }
 
-        public enum eState
+        public static string ShowAllVehicleDetails(string i_Plate)
         {
-            Repairing = 0,
-            Repaired = 1,
-            Paid = 2
+            return GetCustomerCard(i_Plate).ToString();
         }
     }
 }
+
+
+
+
+
+//    foreach (var vehicle in VehicleManager<Vehicle>.SupportedVehicles)
+//    {
+//        if (curVehicle.GetType() == vehicle)
+//        {
+//            Console.WriteLine(vehicle.Name + " GGGGGGGOOOOOOOOOOOODDDDDDDDDDDDDDD");
+//            Console.ReadLine();
+//        }
+//    }
+//}
+//else
+//{
+//    //TODO: Throw Exception
+//}
