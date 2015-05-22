@@ -34,7 +34,7 @@
         {
             if (FuelType != i_FuelType)
             {
-                throw new ArgumentException("Wrong fuel Type!");
+                throw new ArgumentException("Wrong fuel Type");
             }
 
             float fuelAfterFueling = m_MountOfFuel + i_ToFuel;

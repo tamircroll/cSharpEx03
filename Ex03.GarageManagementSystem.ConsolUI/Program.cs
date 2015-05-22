@@ -29,7 +29,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
             while (true)
             {
-                int choise = ConsoleHandler.ChooseAction();
+                int choise = ChooseAction();
 
                 switch (choise)
                 {
@@ -53,7 +53,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_FuelUp:
                     {
-                        new FuelVehiclesUiHandler().UiFuelUp();
+                        FuelVehiclesUiHandler.UiFuelUp();
                         break;
                     }
                     case k_ChargeBattery:
@@ -63,18 +63,47 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_ShowVehicleDetails:
                     {
-                        GarageActionsExecuter.ShowPlate(allVehicles);
+                        GarageActionsExecuter.ShowAllDetails();
                         break;
                     }
                 }
             }
         }
 
-        public enum eState
+        public static int ChooseAction()
         {
-            Repairing = 0,
-            Repaired = 1,
-            Paid = 2
+            Ex02.ConsoleUtils.Screen.Clear();
+            string choiseStr, msg = "Please choose the action you like to perform and press Enter:";
+            char choise = '0';
+
+            while (true)
+            {
+                Console.WriteLine(String.Format(
+@"{0}
+1. Insert a new vehicle.
+2. Show all vehicles plates numbers.
+3. Change vehicle state.
+4. Fill wheels to maximum
+5. Fill full Fuel Tank.
+6. Charge battery to maximum.
+7. Show vehicle details.
+", msg));
+
+                choiseStr = Console.ReadLine();
+                if (choiseStr.Length == 1)
+                {
+                    choise = choiseStr.ToCharArray()[0];
+                    if (choise >= '1' && choise <= '7')
+                    {
+                        break;
+                    }
+                }
+
+                Ex02.ConsoleUtils.Screen.Clear();
+                msg = "invalid input, please choose again:";
+            }
+
+            return choise - '0';
         }
     }
 }

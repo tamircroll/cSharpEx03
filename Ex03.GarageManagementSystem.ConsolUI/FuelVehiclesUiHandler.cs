@@ -8,7 +8,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public class FuelVehiclesUiHandler
     {
-        public void UiFuelUp()
+        public static void UiFuelUp()
         {
             String plateNumber;
             float mountToFill;

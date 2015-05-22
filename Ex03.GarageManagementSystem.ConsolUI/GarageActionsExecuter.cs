@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ex03.GarageLogic.Logic;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -40,23 +41,15 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             Console.ReadLine();
         }
 
-        public static void ShowPlate(Dictionary<string, CustomerCard> i_AllVehicles)
+        public static void ShowAllDetails()
         {
-            string plate = ConsoleHandler.GetPlateNumber();
-            CustomerCard desieredCard;
-
-            if (i_AllVehicles.ContainsKey(plate))
-            {
-                Ex02.ConsoleUtils.Screen.Clear();
-                i_AllVehicles.TryGetValue(plate, out desieredCard);
-                Console.WriteLine(desieredCard);
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("This car is not in the Garage");
-                Console.ReadLine();
-            }
+            Ex02.ConsoleUtils.Screen.Clear();
+            Console.WriteLine("Please enter the required Plate Number");
+            string plate = Console.ReadLine();
+            string allDetails = GarageLogicHandler.ShowAllVehicleDetails(plate);
+            
+            Console.WriteLine(allDetails);
+            Console.ReadLine();
         }
     }
 }

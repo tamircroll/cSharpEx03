@@ -19,7 +19,7 @@ namespace Ex03.GarageLogic.Logic
 
             if (!isInGarage)
             {
-                throw  new KeyNotFoundException(string.Format("The vehicle with plate number {0} is not in the garage", i_Key));
+                throw  new KeyNotFoundException(String.Format("The vehicle with plate number {0} is not in the garage", i_Key));
             }
 
             return customerCard;
@@ -32,12 +32,12 @@ namespace Ex03.GarageLogic.Logic
 
         public static string InsertVehicle(Vehicle vehicle, string i_Owners, string Phone)
         {
-            string msg = string.Format("Car with plate {0} added", vehicle.PlateNumber);
+            string msg = String.Format("Car with plate {0} added", vehicle.PlateNumber);
 
             if (sr_AllVehicles.ContainsKey(vehicle.PlateNumber))
             {
                 getCustomerCard(vehicle.PlateNumber).State = CustomerCard.eState.Repairing;
-                msg = string.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
+                msg = String.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
             }
             
             sr_AllVehicles.Add(vehicle.PlateNumber, new CustomerCard(i_Owners, Phone, vehicle));
@@ -100,6 +100,18 @@ namespace Ex03.GarageLogic.Logic
             {
                 throw new ArgumentException("This Car does not support electric funcions");
             }
+        }
+
+        public static string ShowAllVehicleDetails(string i_Plate)
+        {
+            return getCustomerCard(i_Plate).ToString();
+        }
+
+        public enum eState
+        {
+            Repairing = 0,
+            Repaired = 1,
+            Paid = 2
         }
     }
 }
