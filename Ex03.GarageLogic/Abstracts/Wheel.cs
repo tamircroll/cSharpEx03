@@ -15,16 +15,14 @@ namespace Ex03.GarageLogic
             m_MaxAirPressure = i_MaxAirPressure;
         }
 
-        public void AddAir(float i_AirToAdd)
+        public void InflatWheel(float toInflate)
         {
-            float airAfterAddition = i_AirToAdd + m_AirPressure;
-
-            if (airAfterAddition > m_MaxAirPressure || airAfterAddition < 0)
+            if (toInflate + AirPressure > MaxAirPressure)
             {
-                throw new ValueOutOfRangeException(airAfterAddition, m_MaxAirPressure, 0);
+                throw new ValueOutOfRangeException(toInflate + AirPressure, MaxAirPressure, 0);
             }
 
-            m_AirPressure = airAfterAddition;
+            m_AirPressure += toInflate;
         }
 
         public string Manufacturer
@@ -35,15 +33,22 @@ namespace Ex03.GarageLogic
         public float AirPressure
         {
             get { return m_AirPressure; }
-            set { m_AirPressure = value; }
+            set { }
+        }
+
+        public float MaxAirPressure
+        {
+            get { return m_MaxAirPressure; }
         }
 
         public override string ToString()
         {
             return string.Format(
 @"Air Pressure: {0}
-Manufacturer: {1}",
+Max air presure: {1}
+Manufacturer: {2}",
                   AirPressure,
+                  MaxAirPressure,
                   Manufacturer);
         }
     }

@@ -22,12 +22,14 @@ namespace Ex03.GarageLogic
             setWheels(i_wheel);
         }
 
-        private void setWheels(Wheel i_Wheels)
+        private void setWheels(Wheel i_Wheel)
         {
             m_Wheels = new List<Wheel>();
+
             for (int i = 0; i < m_NumOfWheels; i++)
             {
-                m_Wheels.Add(i_Wheels);
+                Wheel wheelToAdd = new Wheel(i_Wheel.Manufacturer, i_Wheel.AirPressure, i_Wheel.MaxAirPressure);
+                m_Wheels.Add(wheelToAdd);
             }
         }
 

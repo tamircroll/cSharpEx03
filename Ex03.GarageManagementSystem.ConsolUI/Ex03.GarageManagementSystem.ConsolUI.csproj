@@ -45,10 +45,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleHandler.cs" />
     <Compile Include="ElectricVehiclesUiHandler.cs" />
     <Compile Include="FuelVehiclesUiHandler.cs" />
-    <Compile Include="GarageActionsExecuter.cs" />
+    <Compile Include="GarageUiHandler.cs" />
     <Compile Include="Program.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>

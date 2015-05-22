@@ -35,7 +35,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     case k_insertVehicle:
                     {
-                        GarageUiHandler.InsertNewCar(allVehicles);
+                        GarageUiHandler.InsertNewCar();
                         break;
                     }
                     case k_ShowAllPlates:
@@ -50,6 +50,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_FillWheels:
                     {
+                        GarageUiHandler.InflateWheels();
                         break;
                     }
                     case k_FuelUp:
@@ -84,9 +85,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 1. Insert a new vehicle.
 2. Show all vehicles plates numbers.
 3. Change vehicle state.
-4. Fill wheels to maximum
-5. Fill full Fuel Tank.
-6. Charge battery to maximum.
+4. Inflate wheels to maximum.
+5. Fill fuel Tank.
+6. Charge battery.
 7. Show vehicle details.
 ", msg));
 

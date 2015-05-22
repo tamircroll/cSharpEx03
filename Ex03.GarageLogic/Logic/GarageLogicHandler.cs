@@ -37,7 +37,7 @@ namespace Ex03.GarageLogic.Logic
 
             if (sr_AllVehicles.ContainsKey(vehicle.PlateNumber))
             {
-                GetCustomerCard(vehicle.PlateNumber).State = CustomerCard.eState.Repairing;
+                GetCustomerCard(vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
                 msg = String.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
             }
             
@@ -76,20 +76,20 @@ namespace Ex03.GarageLogic.Logic
         {
             if (i_FuelTypeInt < 0 || i_FuelTypeInt >= Enum.GetValues(typeof(Fueled.eFuelType)).Length)
             {
-                throw new ValueOutOfRangeException(i_FuelTypeInt ,0, Enum.GetValues(typeof (Fueled.eFuelType)).Length);
+                throw new ValueOutOfRangeException(i_FuelTypeInt + 1 ,1, Enum.GetValues(typeof (Fueled.eFuelType)).Length);
             }
 
             return (Fueled.eFuelType) i_FuelTypeInt;
         }
 
-        public static CustomerCard.eState IntToStateType(int i_StateTypeInt)
+        public static CustomerCard.eStatus IntToStateType(int i_StateTypeInt)
         {
-            if (i_StateTypeInt < 0 || i_StateTypeInt >= Enum.GetValues(typeof(CustomerCard.eState)).Length)
+            if (i_StateTypeInt < 0 || i_StateTypeInt >= Enum.GetValues(typeof(CustomerCard.eStatus)).Length)
             {
-                throw new ValueOutOfRangeException(i_StateTypeInt, 0, Enum.GetValues(typeof(CustomerCard.eState)).Length);
+                throw new ValueOutOfRangeException(i_StateTypeInt + 1, 1, Enum.GetValues(typeof(CustomerCard.eStatus)).Length);
             }
 
-            return (CustomerCard.eState)i_StateTypeInt;
+            return (CustomerCard.eStatus)i_StateTypeInt;
         }
 
         public static void ChargeBattery(string i_Plate, float i_ToFill)
@@ -119,15 +119,15 @@ namespace Ex03.GarageLogic.Logic
 
             foreach (KeyValuePair<string, CustomerCard> card in sr_AllVehicles)
             {
-                if (card.Value.State == CustomerCard.eState.Repairing && i_ToShowRepairing)
+                if (card.Value.Status == CustomerCard.eStatus.Repairing && i_ToShowRepairing)
                 {
                     allPlates.Append(string.Format("{0}{1}", card.Key, System.Environment.NewLine));
                 }
-                else if (card.Value.State == CustomerCard.eState.Repaired && i_ToShowRepaired)
+                else if (card.Value.Status == CustomerCard.eStatus.Repaired && i_ToShowRepaired)
                 {
                     allPlates.Append(string.Format("{0}{1}", card.Key, System.Environment.NewLine));
                 }
-                else if (card.Value.State == CustomerCard.eState.Paid && i_ToShowPaid)
+                else if (card.Value.Status == CustomerCard.eStatus.Paid && i_ToShowPaid)
                 {
                     allPlates.Append(string.Format("{0}{1}", card.Key, System.Environment.NewLine));
                 }
@@ -136,15 +136,27 @@ namespace Ex03.GarageLogic.Logic
             return allPlates.ToString();
         }
 
-        public static void ChangeStatus(string i_PlatNumber, CustomerCard.eState i_NewState)
+        public static void ChangeStatus(string i_PlatNumber, CustomerCard.eStatus i_NewStatus)
         {
             CustomerCard curCard= GetCustomerCard(i_PlatNumber);
-            curCard.State = i_NewState;
+            curCard.Status = i_NewStatus;
         }
 
         public static string ShowAllVehicleDetails(string i_Plate)
         {
             return GetCustomerCard(i_Plate).ToString();
+        }
+
+
+        public static void InflateWheels(string i_Plate)
+        {
+            Vehicle curVehicle = GetVehicle(i_Plate);
+            List<Wheel> curWheels = curVehicle.Wheels;
+            foreach (Wheel wheel in curWheels)
+            {
+                float toInflate = wheel.MaxAirPressure - wheel.AirPressure;
+                wheel.InflatWheel(toInflate);
+            }
         }
     }
 }

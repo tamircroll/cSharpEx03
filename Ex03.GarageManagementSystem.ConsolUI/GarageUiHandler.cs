@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Logic;
-using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public static class GarageUiHandler
     {
-        public static void InsertNewCar(Dictionary<string, CustomerCard> i_AllVehicles)
+        public static void InsertNewCar()
         {
             //TODO!!!!
         }
@@ -83,6 +81,7 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
                     string plate = Console.ReadLine();
                     string allDetails = GarageLogicHandler.ShowAllVehicleDetails(plate);
 
+                    Ex02.ConsoleUtils.Screen.Clear();
                     Console.WriteLine(allDetails);
                     Console.ReadLine();
                     break;
@@ -135,6 +134,37 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
                     GarageLogicHandler.ChangeStatus(plate, statusType);
                     Console.WriteLine("Status Changed to {0}", statusType);
                     Console.ReadLine();
+                    break;
+                }
+                catch (Exception e)
+                {
+                    string msg = e.Message;
+                    if (e.InnerException != null)
+                    {
+                        msg = e.InnerException.Message;
+                    }
+
+                    Console.WriteLine(
+                        @"{0}.
+Please press 'B' to go back to menu or any other thing to try again.", msg);
+                    string choice = Console.ReadLine().ToLower();
+                    if (choice == "b")
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        public static void InflateWheels()
+        {
+            while(true){
+                try
+                {
+                    Ex02.ConsoleUtils.Screen.Clear();
+                    Console.WriteLine("Please enter the required Plate Number");
+                    string plate = Console.ReadLine();
+                    GarageLogicHandler.InflateWheels(plate);
                     break;
                 }
                 catch (Exception e)
