@@ -10,7 +10,6 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             while (true)
             {
                 string plate = ConsoleHandler.GetPlateNumber();
-
             }
         }
 
@@ -44,6 +43,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         {
             string plate = ConsoleHandler.GetPlateNumber();
             CustomerCard desieredCard;
+
             if (i_AllVehicles.ContainsKey(plate))
             {
                 Ex02.ConsoleUtils.Screen.Clear();

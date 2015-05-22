@@ -38,6 +38,11 @@
             }
 
             float fuelAfterFueling = m_MountOfFuel + i_ToFuel;
+            if (i_ToFuel <= 0)
+            {
+                throw new ArgumentException("The mount to fuel have to be possitive");
+            }
+
             if (fuelAfterFueling <= r_MaxFuel && fuelAfterFueling >= 0)
             {
                 m_MountOfFuel = fuelAfterFueling;

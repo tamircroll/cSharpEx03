@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ex03.GarageLogic;
+using Ex03.GarageLogic.Logic;
 using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
@@ -22,11 +23,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             Wheel wheel = new Wheel("hob", 4f, 7f);
             FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 10, wheel);
             ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 10, wheel);
-            CustomerCard cust1 = new CustomerCard("Yossi", "054-9565986", car);
-            CustomerCard cust2 = new CustomerCard("Tamir", "21324354", car2);
 
-            allVehicles.Add(car.PlateNumber, cust1);
-            allVehicles.Add(car2.PlateNumber, cust2);
+            GarageLogicHandler.InsertVehicle(car, "", "");
+            GarageLogicHandler.InsertVehicle(car2, "Tamir", "21324354");
 
             while (true)
             {
@@ -54,11 +53,12 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                     case k_FuelUp:
                     {
-                        FuelVehiclesActionsExecuter.FuelUp(allVehicles);
+                        FuelVehiclesUiHandler.UiFuelUp(allVehicles);
                         break;
                     }
                     case k_ChargeBattery:
                     {
+                        ElectricVehiclesActionsExecuter.FuelUp(allVehicles);
                         break;
                     }
                     case k_ShowVehicleDetails:

@@ -8,7 +8,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         private readonly string r_Owners;
         private readonly string r_Phone;
-        private Program.eState m_State;
+        private eState m_State;
         private Vehicle m_Vehicle;
 
         public CustomerCard(string i_Owners, string i_Phone, Vehicle i_Vehicle)
@@ -16,7 +16,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             r_Owners = i_Owners;
             r_Phone = i_Phone;
             m_Vehicle = i_Vehicle;
-            m_State = Program.eState.Repairing;
+            m_State = eState.Repairing;
         }
 
         public Vehicle Vehicle
@@ -24,7 +24,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             get { return m_Vehicle; }
         }
 
-        public Program.eState State
+        public eState State
         {
             get { return m_State; }
             set { m_State = value; }
@@ -51,6 +51,14 @@ State: {3}
            Owners,
            Phone,
            State);
+        }
+
+
+        public enum eState
+        {
+            Repairing = 0,
+            Repaired = 1,
+            Paid = 2
         }
     }
 }

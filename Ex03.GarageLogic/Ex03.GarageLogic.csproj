@@ -36,8 +36,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CarNotInDictionaryException.cs" />
     <Compile Include="Exceptions\ValueOutOfRangeException.cs" />
     <Compile Include="Abstracts\Vehicle.cs" />
+    <Compile Include="Logic\CustomerCard.cs" />
+    <Compile Include="Logic\FuelVehicleLogicHandler.cs" />
     <Compile Include="VehicleManager.cs" />
     <Compile Include="Abstracts\Car.cs" />
     <Compile Include="Abstracts\Electric.cs" />

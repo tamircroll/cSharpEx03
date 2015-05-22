@@ -1,111 +1,95 @@
-﻿namespace Ex03.GarageManagementSystem.ConsolUI
+﻿using System;
+using System.Reflection;
+using Ex03.GarageLogic;
+using Ex03.GarageLogic.Vehicles;
+
+namespace Ex03.GarageManagementSystem.ConsolUI
 {
     using System.Collections.Generic;
 
     public class ElectricVehiclesActionsExecuter
     {
-        private static string k_MaxFuelMethodName = "MaxFuel";
-        private static string k_CurFuelMethodName = "MountOfFuel";
-        private static string k_FillFuelMethosName = "FuelUp";
+        private static string k_RemainBatteryMethod = "RemainBattery";
+        private static string k_MaxBatteryMethod = "MaxBattery";
+        private static string k_ChargeBatteryMethos = "ChargeBattery";
 
         public static void FuelUp(Dictionary<string, CustomerCard> i_AllVehicles)
         {
-        //    Fueled.eFuelType? requiredFuelType = null;
-        //    float? maxFuel = null, curFuel = null;
-        //    bool isInGarage, isOnFuel;
-        //    Vehicle curVehicle = null;
+            float? maxBattery = null, batteryLeft = null;
+            bool isInGarage;
+            Vehicle curVehicle = null;
 
-        //    do
-        //    {
-        //        var plate = ConsoleHandler.GetPlateNumber();
-        //        CustomerCard customerCard;
-        //        isInGarage = i_AllVehicles.TryGetValue(plate, out customerCard);
+            do
+            {
+                var plate = ConsoleHandler.GetPlateNumber();
+                CustomerCard customerCard;
+                isInGarage = i_AllVehicles.TryGetValue(plate, out customerCard);
 
-        //        if (!isInGarage)
-        //        {
-        //            Console.WriteLine("The vehicle with plate {0} is not in the garage, please prees Enter and try again.", plate);
-        //            Console.ReadLine();
-        //            continue;
-        //        }
+                if (!isInGarage)
+                {
+                    Console.WriteLine("The vehicle with plate {0} is not in the garage, please prees Enter and try again.", plate);
+                    Console.ReadLine();
+                    continue;
+                }
 
-        //        curVehicle = customerCard.Vehicle;
-        //        if ((bool)curVehicle.IsElectric)
-        //        {
-        //            Console.WriteLine("The vehicle with plate {0} does not run on fuel, please prees Enter and try again.", plate);
-        //            Console.ReadLine();
-        //        }
-        //    } while (!isInGarage || (bool)curVehicle.IsElectric);
+                curVehicle = customerCard.Vehicle;
+                if (!(bool)curVehicle.IsElectric)
+                {
+                    Console.WriteLine("The vehicle with plate {0} does not run on electricity, please prees Enter and try again.", plate);
+                    Console.ReadLine();
+                }
+            } while (!isInGarage || !(bool)curVehicle.IsElectric);
 
-        //    MethodInfo[] methods = curVehicle.GetType().GetMethods();
-        //    foreach (var method in methods)
-        //    {
-        //        if (method.Name == k_MaxFuelMethodName)
-        //        {
-        //            maxFuel = (float)method.Invoke(curVehicle, null);
-        //        }
+            MethodInfo[] methods = curVehicle.GetType().GetMethods();
+            foreach (var method in methods)
+            {
+                if (method.Name == k_MaxBatteryMethod)
+                {  
+                    maxBattery = (float)method.Invoke(curVehicle, null);
+                }
 
-        //        if (method.Name == k_CurFuelMethodName)
-        //        {
-        //            curFuel = (float)method.Invoke(curVehicle, null);
-        //        }
+                if (method.Name == k_RemainBatteryMethod)
+                {
+                    batteryLeft = (float)method.Invoke(curVehicle, null);   //להעביר לדקות!!!!!!!!!
+                }
+            }
 
-        //        if (method.Name == k_FuelTypeMethodName)
-        //        {
-        //            requiredFuelType = (Fueled.eFuelType)method.Invoke(curVehicle, null);
-        //        }
-        //    }
+            if (maxBattery == null || batteryLeft == null)
+            {
+                throw new ArgumentException(@"Could not find all methods");
+            }
 
-        //    if (maxFuel == null || curFuel == null || requiredFuelType == null)
-        //    {
-        //        throw new ArgumentException(@"Could not find all methods");
-        //    }
+            float mountToFill;
+            float batteryAfterCharge;
+            do
+            {
+                mountToFill = ConsoleHandler.GetFuelMountToFill();
+                batteryAfterCharge = (float)( batteryLeft + mountToFill);
+                if (batteryAfterCharge > maxBattery)
+                {
+                    Console.WriteLine("The max mount of battery is {0} and you tried to fill up to {1}, please prees Enter and try again.",
+                        maxBattery, batteryAfterCharge);
+                    Console.ReadLine();
+                }
+            } while (batteryAfterCharge > maxBattery);
 
-        //    Fueled.eFuelType FuelTypeToFill;
-        //    do
-        //    {
-        //        FuelTypeToFill = ConsoleHandler.GetFuel();
-        //        if (requiredFuelType != FuelTypeToFill)
-        //        {
-        //            Console.WriteLine("The fuel type needed is {0}, and you asked for {1}, please prees Enter and try again.", requiredFuelType,
-        //                FuelTypeToFill);
-        //            Console.ReadLine();
-        //        }
-        //    } while (requiredFuelType != FuelTypeToFill);
+            bool isCharge = false;
+            foreach (var method in methods)
+            {
+                if (method.Name == k_ChargeBatteryMethos)
+                {
+                    method.Invoke(curVehicle, new object[] { mountToFill });
+                    Console.WriteLine("{0} Liters added and now there are {1} Liters.", mountToFill, batteryAfterCharge);
+                    Console.ReadLine();
+                    isCharge = true;
+                    break;
+                }
+            }
 
-        //    float mountToFill;
-        //    float fuelAfterAddition;
-        //    do
-        //    {
-        //        mountToFill = ConsoleHandler.GetFuelMountToFill();
-        //        fuelAfterAddition = (float)(mountToFill + curFuel);
-        //        if (fuelAfterAddition > maxFuel)
-        //        {
-        //            Console.WriteLine("The max mount of fuel is {0} and you tried to fill up to {1}, please prees Enter and try again.",
-        //                maxFuel, fuelAfterAddition);
-        //            Console.ReadLine();
-        //        }
-        //    } while (fuelAfterAddition > maxFuel);
-
-        //    bool isFueled = false;
-        //    foreach (var method in methods)
-        //    {
-        //        if (method.Name == k_FillFuelMethosName)
-        //        {
-        //            method.Invoke(curVehicle, new object[] { mountToFill, FuelTypeToFill });
-        //            Console.WriteLine("{0} Liters added and now there are {1} Liters.", mountToFill, fuelAfterAddition);
-        //            Console.ReadLine();
-        //            isFueled = true;
-        //            break;
-        //        }
-        //    }
-
-        //    if (!isFueled)
-        //    {
-        //        throw new ArgumentException(@"Could not find the method {0}", k_FillFuelMethosName);
-        //    }
-        //}
-
-
-
+            if (!isCharge)
+            {
+                throw new ArgumentException(@"Could not find the method {0}", k_ChargeBatteryMethos);
+            }
+        }
     }
 }
