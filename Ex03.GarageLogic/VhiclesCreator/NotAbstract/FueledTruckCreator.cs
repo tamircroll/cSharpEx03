@@ -11,6 +11,7 @@ namespace Ex03.GarageLogic.VhicleCreator
         protected const string k_DangerousMatirials = @"Dangerous Matirial:
 1. Carrying
 2. Not Carrying";
+
         protected bool m_DangerousMaterials;
         protected float m_CarryWeight;
 

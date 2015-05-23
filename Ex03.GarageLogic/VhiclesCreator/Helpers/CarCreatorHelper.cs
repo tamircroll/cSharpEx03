@@ -8,13 +8,12 @@ namespace Ex03.GarageLogic.VhicleCreator
 
     public static class CarCreatorHelper
     {
-
         public static string SetColorsField()
         {
             StringBuilder str = new StringBuilder();
 
             str.Append(string.Format("Color:{0}", Environment.NewLine));
-            foreach (Car.eColor color in Enum.GetValues(typeof (Car.eColor)))
+            foreach(Car.eColor color in Enum.GetValues(typeof(Car.eColor)))
             {
                 str.Append(string.Format("{0}. {1}{2}", (int) color, color, Environment.NewLine));
             }
@@ -27,7 +26,7 @@ namespace Ex03.GarageLogic.VhicleCreator
             StringBuilder str = new StringBuilder();
 
             str.Append(string.Format("Number of doors:{0}", Environment.NewLine));
-            foreach (Car.eNumOfDoors numOfDoors in Enum.GetValues(typeof (Car.eNumOfDoors)))
+            foreach(Car.eNumOfDoors numOfDoors in Enum.GetValues(typeof(Car.eNumOfDoors)))
             {
                 str.Append(string.Format("{0}. {1}{2}", (int) numOfDoors, numOfDoors, Environment.NewLine));
             }
@@ -45,10 +44,13 @@ namespace Ex03.GarageLogic.VhicleCreator
                 throw new FormatException("The numbers of doors input is not a number");
             }
 
-            if (numOfDoorsInt < 0 || numOfDoorsInt >= Enum.GetValues(typeof (Car.eNumOfDoors)).Length)
+            if(numOfDoorsInt < 0 || numOfDoorsInt >= Enum.GetValues(typeof(Car.eNumOfDoors)).Length)
             {
-                throw new ValueOutOfRangeException("number of doors", numOfDoorsInt,
-                    Enum.GetValues(typeof (Car.eNumOfDoors)).Length - 1, 0);
+                throw new ValueOutOfRangeException(
+                    "number of doors",
+                    numOfDoorsInt, 
+                    Enum.GetValues(typeof(Car.eNumOfDoors)).Length - 1,
+                    0);
             }
 
             return (Car.eNumOfDoors) numOfDoorsInt;
@@ -63,10 +65,9 @@ namespace Ex03.GarageLogic.VhicleCreator
                 throw new FormatException("The numbers of doors input was not a number");
             }
 
-            if (colorInt < 0 || colorInt >= Enum.GetValues(typeof (Car.eColor)).Length)
+            if (colorInt < 0 || colorInt >= Enum.GetValues(typeof(Car.eColor)).Length)
             {
-                throw new ValueOutOfRangeException("Color", colorInt, Enum.GetValues(typeof (Car.eColor)).Length - 1,
-                    0);
+                throw new ValueOutOfRangeException("Color", colorInt, Enum.GetValues(typeof(Car.eColor)).Length - 1, 0);
             }
 
             return (Car.eColor) colorInt;

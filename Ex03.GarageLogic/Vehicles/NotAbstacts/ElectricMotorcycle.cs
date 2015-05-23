@@ -42,7 +42,9 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             return string.Format(
-@"{0}
+@"ElectricMotorcycle:
+
+{0}
 {1}
 ",
 base.ToString(),

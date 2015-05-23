@@ -20,13 +20,16 @@ namespace Ex03.GarageLogic.VhicleCreator
             bool isNumber = int.TryParse(i_LicenseStr, out licenseInt);
             if (!isNumber)
             {
-                throw new FormatException("The numbers of doors input is not a number");
+                throw new FormatException("The license input is not a number");
             }
 
             if (licenseInt < 0 || licenseInt >= Enum.GetValues(typeof(Motorcycle.eLicense)).Length)
             {
-                throw new ValueOutOfRangeException("number of doors", licenseInt,
-                    Enum.GetValues(typeof(Motorcycle.eLicense)).Length - 1, 0);
+                throw new ValueOutOfRangeException(
+                    "license",
+                    licenseInt,
+                    Enum.GetValues(typeof(Motorcycle.eLicense)).Length - 1,
+                    0);
             }
 
             return (Motorcycle.eLicense)licenseInt;

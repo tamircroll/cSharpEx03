@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic.Vehicles
 
         public Electric(float i_RemainBatteryInMinutes, float i_MaxBattery)
         {
-            if (i_RemainBatteryInMinutes/60 > i_MaxBattery)
+            if (i_RemainBatteryInMinutes / 60 > i_MaxBattery)
             {
                 throw new ValueOutOfRangeException("maximum battery", i_RemainBatteryInMinutes, i_MaxBattery, 0);
             }

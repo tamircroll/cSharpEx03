@@ -48,7 +48,9 @@ namespace Ex03.GarageLogic.Vehicles
         public override string ToString()
         {
             return string.Format(
-@"{0}
+@"FueledCar:
+
+{0}
 {1}
 ", 
  base.ToString(), 

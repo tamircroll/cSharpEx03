@@ -40,7 +40,9 @@
          public override string ToString()
          {
              return string.Format(
- @"{0}
+ @"Electric car:
+
+{0}
 {1}
 ",
  base.ToString(),

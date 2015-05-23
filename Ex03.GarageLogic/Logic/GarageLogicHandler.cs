@@ -38,8 +38,7 @@ namespace Ex03.GarageLogic.Logic
             if (sr_AllVehicles.ContainsKey(i_CustomerCard.Vehicle.PlateNumber))
             {
                 GetCustomerCard(i_CustomerCard.Vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
-                msg = string.Format("Car with plate {0} changed to 'Repairing' state",
-                    i_CustomerCard.Vehicle.PlateNumber);
+                msg = string.Format("Car with plate {0} changed to 'Repairing' state", i_CustomerCard.Vehicle.PlateNumber);
             }
             else
             {

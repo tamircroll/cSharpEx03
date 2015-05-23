@@ -51,7 +51,8 @@
     <Compile Include="VhiclesCreator\Abstracts\VehicleCreator.cs" />
     <Compile Include="Vehicles\NotAbstacts\ElectricMotorcycle.cs" />
     <Compile Include="Vehicles\NotAbstacts\FueledMotorcycle.cs" />
-    <Compile Include="VhiclesCreator\NotAbstract\MotorcycleCreatorHelper.cs" />
+    <Compile Include="VhiclesCreator\Helpers\MotorcycleCreatorHelper.cs" />
+    <Compile Include="VhiclesCreator\Helpers\TruckCreatorHelper.cs" />
     <Compile Include="VhiclesCreator\VehicleCreatorManager.cs" />
     <Compile Include="Vehicles\AbstractsAndCompositions\Car.cs" />
     <Compile Include="Vehicles\AbstractsAndCompositions\Electric.cs" />
