@@ -22,18 +22,8 @@ namespace Ex03.GarageLogic.VhicleCreator
 
         protected override void InitSpecificVehicleParams()
         {
-            bool isNumber = float.TryParse(ParamsDic[k_CarryWeight], out m_CarryWeight);
-            if (!isNumber)
-            {
-                throw new FormatException("The engine input is not a number");
-            }
-
-            if (ParamsDic[k_DangerousMatirials] != "1" && ParamsDic[k_DangerousMatirials] != "2")
-            {
-                throw new FormatException("The input for Dangerous matirials is not valid");
-            }
-
-            m_DangerousMaterials = ParamsDic[k_DangerousMatirials] == "1";
+            TruckCreatorHelper.SetCarryWeight(ParamsDic[k_CarryWeight], out m_CarryWeight);
+            m_DangerousMaterials = TruckCreatorHelper.GetDangerousMaterials(ParamsDic[k_DangerousMatirials]);
         }
 
         public override CustomerCard InsertVehicle()

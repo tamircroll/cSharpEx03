@@ -35,7 +35,7 @@ namespace Ex03.GarageLogic.VhicleCreator
                 m_AirPressure,
                 m_Color,
                 m_NumOfDoors,
-                m_BatteryHoursRemains);
+                m_BatteryMinutesRemain);
 
             return new CustomerCard(m_Owners, m_Phone, vehicle);
         }

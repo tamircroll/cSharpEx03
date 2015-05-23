@@ -1,5 +1,6 @@
 ﻿using Ex03.GarageLogic.Logic.VhicleCreator;
 using Ex03.GarageLogic.VhicleCreator;
+using Ex03.GarageLogic.VhicleCreator.NotAbstract;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -12,9 +13,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         {
             { "1", "Fuled Car" },
             { "2", "Electric Car" },
-            { "3", "Track" },
-            { "4", "Fuled Motorcycle" },
-            { "5", "Electric Motorcycle" }
+            { "3", "Fuled Motorcycle" },
+            { "4", "Electric Motorcycle" },
+            { "5", "Track" }
         };
 
         public static Dictionary<string, string> SupportedVehicles
@@ -31,11 +32,11 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 case "2":
                     return new ElectricCarCreator();
                 case "3":
-                    return new FueledTruckCreator();
-                case "4":
                     return new FueledMotorcycleCreator();
+                case "4":
+                    return new ElectricMotorcycleCreator();
                 case "5":
-                    return null;
+                    return new FueledTruckCreator();
             }
             
             throw new FormatException("The vehicle choice is not a number in the given range");
