@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
 
         public float RemainBatteryTime()
         {
-            return r_ElectricEngine.RemainBatteryTime;
+            return r_ElectricEngine.RemainBatteryInHours;
         }
 
         public float MaxBattery()

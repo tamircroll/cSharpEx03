@@ -29,7 +29,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 case "1":
                     return new FueledCarCreator();
                 case "2":
-                    return null;
+                    return new ElectricCarCreator();
                 case "3":
                     return new FueledTruckCreator();
                 case "4":

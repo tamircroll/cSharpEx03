@@ -6,7 +6,7 @@
          private const float k_MaxWheelAirPrusre = 31;
          private readonly Electric r_ElectricEngine;
 
-         public ElectricCar(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_RemainBatteryTime, eColor i_Color, eNumOfDoors i_NumOfDoors)
+         public ElectricCar(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, eColor i_Color, eNumOfDoors i_NumOfDoors, float i_RemainBatteryTime)
              : base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, k_MaxWheelAirPrusre, i_Color, i_NumOfDoors)
          {
              r_ElectricEngine = new Electric(i_RemainBatteryTime, k_MaxBattery);
@@ -14,7 +14,7 @@
 
          public float RemainBatteryTime()
          {
-             return r_ElectricEngine.RemainBatteryTime;
+             return r_ElectricEngine.RemainBatteryInHours;
          }
 
          public float MaxBattery()

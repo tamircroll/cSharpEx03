@@ -30,6 +30,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     GarageLogicHandler.ChargeBattery(plateNumber, minutesToFill);
                     Console.WriteLine("Battery was successfully charged");
                     Console.ReadLine();
+                    break;
                 }
                 catch (Exception e)
                 {

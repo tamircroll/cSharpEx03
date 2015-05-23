@@ -53,6 +53,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     GarageLogicHandler.FillFuel(plateNumber, mountToFill, fuelType);
                     Console.WriteLine("Fuel was successfully filled");
                     Console.ReadLine();
+                    break;
                 }
                 catch (Exception e)
                 {

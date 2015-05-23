@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using Ex03.GarageLogic.Vehicles;
 using Ex03.GarageManagementSystem.ConsolUI;
 
 namespace Ex03.GarageLogic.Logic.VhicleCreator
