@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using Ex03.GarageLogic.Vehicles;
+﻿using Ex03.GarageLogic.Vehicles;
 using Ex03.GarageLogic.VhicleCreator;
 using Ex03.GarageManagementSystem.ConsolUI;
 

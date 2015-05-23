@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
         private readonly Electric r_ElectricEngine;
 
         public ElectricMotorcycle(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_RemainBatteryTime, eLicense i_License, int i_Engine) :
-            base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, k_MaxWheelAirPrusre, i_License, i_Engine)
+                base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, k_MaxWheelAirPrusre, i_License, i_Engine)
         {
             r_ElectricEngine = new Electric(i_RemainBatteryTime, k_MaxBattery);
         }
@@ -42,13 +42,13 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             return string.Format(
-@"ElectricMotorcycle:
+@"Electric Motorcycle:
 
 {0}
 {1}
 ",
-base.ToString(),
-r_ElectricEngine);
+                base.ToString(),
+                r_ElectricEngine);
         }
     }
 }

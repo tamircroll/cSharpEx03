@@ -47,11 +47,13 @@ namespace Ex03.GarageLogic.Not_Abstracts_Vehicles
         public override string ToString()
         {
             return string.Format(
-@"{0}
+@"Fueled Motorcycle:
+
+{0}
 {1}
 ",
- base.ToString(),
- r_FuelEngine);
+                base.ToString(),
+                r_FuelEngine);
         }
     }
 }

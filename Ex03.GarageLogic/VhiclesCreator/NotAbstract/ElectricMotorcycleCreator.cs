@@ -1,6 +1,4 @@
-﻿using Ex03.GarageLogic.Logic.VhicleCreator;
-using Ex03.GarageLogic.Not_Abstracts_Vehicles;
-using Ex03.GarageLogic.Vehicles;
+﻿using Ex03.GarageLogic.Vehicles;
 using Ex03.GarageManagementSystem.ConsolUI;
 
 namespace Ex03.GarageLogic.VhicleCreator.NotAbstract

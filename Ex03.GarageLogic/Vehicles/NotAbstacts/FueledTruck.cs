@@ -5,9 +5,9 @@
         private const float k_MaxFuelTankInLiters = 170;
         private const Fueled.eFuelType k_FuelType = Fueled.eFuelType.Soler;
         private readonly Fueled r_FuelEngine;
-
-        public FueledTruck(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MountOfFuel, bool i_DangerousMaterial, float i_CarryWeight) : 
-            base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, i_DangerousMaterial, i_CarryWeight)
+        
+        public FueledTruck(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MountOfFuel, bool i_DangerousMaterial, float i_CarryWeight) :
+                base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, i_DangerousMaterial, i_CarryWeight)
         {
             r_FuelEngine = new Fueled(k_FuelType, i_MountOfFuel, k_MaxFuelTankInLiters);
         }
@@ -45,11 +45,13 @@
         public override string ToString()
         {
             return string.Format(
-@"{0}
+@"Fueled Truck:
+
+{0}
 {1}
 ",
- base.ToString(),
- r_FuelEngine);
+                base.ToString(),
+                r_FuelEngine);
         }
     }
 }

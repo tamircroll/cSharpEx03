@@ -1,5 +1,4 @@
-﻿using System;
-using Ex03.GarageLogic.Vehicles;
+﻿using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageLogic.VhicleCreator
 {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Ex03.GarageLogic.Vehicles
+﻿namespace Ex03.GarageLogic.Vehicles
 {
     public class FueledCar : Car
     {
@@ -48,13 +46,13 @@ namespace Ex03.GarageLogic.Vehicles
         public override string ToString()
         {
             return string.Format(
-@"FueledCar:
+@"Fueled Car:
 
 {0}
 {1}
-", 
- base.ToString(), 
- r_FuelEngine);
+",
+                base.ToString(),
+                r_FuelEngine);
         }
     }
 }

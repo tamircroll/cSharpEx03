@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Ex02.ConsoleUtils;
-using Ex03.GarageLogic;
-using Ex03.GarageLogic.Logic;
-using Ex03.GarageLogic.Vehicles;
+﻿using Ex02.ConsoleUtils;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
