@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         {
             if (i_AirPressure > i_MaxAirPressure)
             {
-                throw new ValueOutOfRangeException("air pressure",i_AirPressure,i_MaxAirPressure,0);
+                throw new ValueOutOfRangeException("air pressure", i_AirPressure, i_MaxAirPressure, 0);
             }
 
             r_Manufacturer = i_Manufacturer;

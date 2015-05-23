@@ -20,14 +20,6 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static void Main(string[] args)
         {
-//            Dictionary<string, CustomerCard> allVehicles = new Dictionary<string, CustomerCard>();
-//            Wheel wheel = new Wheel("hob", 4f, 7f);
-//            FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 10, wheel);
-//            ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 1.2f, wheel);
-//
-//            GarageLogicHandler.InsertVehicle(car, "", "");
-//            GarageLogicHandler.InsertVehicle(car2, "Tamir", "21324354");
-            
             while (true)
             {
                 int choise = ChooseAction();

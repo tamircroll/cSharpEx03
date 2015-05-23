@@ -40,8 +40,10 @@
     <Compile Include="AbstractsAndCompositions\Vehicle.cs" />
     <Compile Include="Logic\CustomerCard.cs" />
     <Compile Include="Logic\GarageLogicHandler.cs" />
+    <Compile Include="VhicleCreator\ElectricCarCreator.cs" />
     <Compile Include="VhicleCreator\FueledCarCreator.cs" />
     <Compile Include="VhicleCreator\FueledVehicleCreator.cs" />
+    <Compile Include="VhicleCreator\FueledMotorcycleCreator.cs" />
     <Compile Include="VhicleCreator\VehicleCreator.cs" />
     <Compile Include="Vehicles\ElectricMotorcycle.cs" />
     <Compile Include="Vehicles\FueledMotorcycle.cs" />

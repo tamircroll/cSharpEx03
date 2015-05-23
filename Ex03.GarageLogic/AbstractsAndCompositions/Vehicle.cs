@@ -10,8 +10,7 @@ namespace Ex03.GarageLogic
         protected List<Wheel> m_Wheels;
         protected bool? m_IsElectric;
 
-        public Vehicle(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure,
-             float i_MaxWheelAirPresure, int i_NumOfWheels)
+        public Vehicle(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MaxWheelAirPresure, int i_NumOfWheels)
         {
             r_Model = i_Model;
             r_PlateNumber = i_PlateNumber;

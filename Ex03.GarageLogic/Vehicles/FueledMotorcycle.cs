@@ -8,8 +8,7 @@ namespace Ex03.GarageLogic.Not_Abstracts_Vehicles
         private const float k_MaxWheelAirPrusre = 34;
         private readonly Fueled r_FuelEngine;
 
-        public FueledMotorcycle(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MountOfFuel, eLicense i_License,
-            int i_Engine)
+        public FueledMotorcycle(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MountOfFuel, eLicense i_License, int i_Engine)
             : base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, k_MaxWheelAirPrusre, i_License, i_Engine)
         {
             r_FuelEngine = new Fueled(Fueled.eFuelType.Octan96, i_MountOfFuel, k_MaxFuelTankInLiters);
@@ -22,7 +21,7 @@ namespace Ex03.GarageLogic.Not_Abstracts_Vehicles
 
         public float MountOfFuel()
         {
-            return r_FuelEngine.MountOfFuel;
+            return r_FuelEngine.LitersOfFuel;
         }
 
         public void FuelUp(float i_ToFuel, Fueled.eFuelType i_FuelType)
