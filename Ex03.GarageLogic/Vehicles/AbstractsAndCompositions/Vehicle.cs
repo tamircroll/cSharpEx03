@@ -101,7 +101,7 @@ Wheel {1}:
 Model: {1}
 {2}
 
-Percent of energy left: {3}",
+Percent of energy left: {3:p}",
                             r_PlateNumber,
                             Model,
                             wheelsInfo,
