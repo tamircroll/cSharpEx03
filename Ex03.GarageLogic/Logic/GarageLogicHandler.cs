@@ -9,9 +9,9 @@ namespace Ex03.GarageLogic.Logic
 {
     public class GarageLogicHandler
     {
+        private static readonly Dictionary<string, CustomerCard> sr_AllVehicles = new Dictionary<string, CustomerCard>();
         private static string k_FillFuelMethos = "FuelUp";
         private static string k_ChargeBatteryMethos = "ChargeBattery";
-        private static readonly Dictionary<string, CustomerCard> sr_AllVehicles = new Dictionary<string, CustomerCard>();
 
         public static CustomerCard GetCustomerCard(string i_Key)
         {
@@ -20,7 +20,7 @@ namespace Ex03.GarageLogic.Logic
 
             if (!isInGarage)
             {
-                throw  new KeyNotFoundException(String.Format("The vehicle with plate number {0} is not in the garage", i_Key));
+                throw new KeyNotFoundException(string.Format("The vehicle with plate number {0} is not in the garage", i_Key));
             }
 
             return customerCard;
@@ -33,12 +33,12 @@ namespace Ex03.GarageLogic.Logic
 
         public static string InsertVehicle(Vehicle vehicle, string i_Owners, string Phone)
         {
-            string msg = String.Format("Car with plate {0} added", vehicle.PlateNumber);
+            string msg = string.Format("Car with plate {0} added", vehicle.PlateNumber);
 
             if (sr_AllVehicles.ContainsKey(vehicle.PlateNumber))
             {
                 GetCustomerCard(vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
-                msg = String.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
+                msg = string.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
             }
             
             sr_AllVehicles.Add(vehicle.PlateNumber, new CustomerCard(i_Owners, Phone, vehicle));
@@ -52,11 +52,11 @@ namespace Ex03.GarageLogic.Logic
             MethodInfo[] methods = curVehicle.GetType().GetMethods();
             bool wasFuled = false; 
 
-            foreach (MethodInfo method in methods)
+            foreach(MethodInfo method in methods)
             {
-                if (method.Name == k_FillFuelMethos)
+                if(method.Name == k_FillFuelMethos)
                 {
-                    method.Invoke(curVehicle, new object[]{i_ToFill, i_FuelType});
+                    method.Invoke(curVehicle, new object[] { i_ToFill, i_FuelType });
                     wasFuled = true;
                 }
             }
@@ -76,7 +76,7 @@ namespace Ex03.GarageLogic.Logic
         {
             if (i_FuelTypeInt < 0 || i_FuelTypeInt >= Enum.GetValues(typeof(Fueled.eFuelType)).Length)
             {
-                throw new ValueOutOfRangeException(i_FuelTypeInt + 1 ,1, Enum.GetValues(typeof (Fueled.eFuelType)).Length);
+                throw new ValueOutOfRangeException(i_FuelTypeInt + 1, 1, Enum.GetValues(typeof(Fueled.eFuelType)).Length);
             }
 
             return (Fueled.eFuelType) i_FuelTypeInt;
@@ -115,7 +115,7 @@ namespace Ex03.GarageLogic.Logic
 
         public static string showPlates(bool i_ToShowRepairing, bool i_ToShowRepaired, bool i_ToShowPaid)
         {
-            StringBuilder allPlates = new StringBuilder("");
+            StringBuilder allPlates = new StringBuilder(string.Empty);
 
             foreach (KeyValuePair<string, CustomerCard> card in sr_AllVehicles)
             {
@@ -138,7 +138,7 @@ namespace Ex03.GarageLogic.Logic
 
         public static void ChangeStatus(string i_PlatNumber, CustomerCard.eStatus i_NewStatus)
         {
-            CustomerCard curCard= GetCustomerCard(i_PlatNumber);
+            CustomerCard curCard = GetCustomerCard(i_PlatNumber);
             curCard.Status = i_NewStatus;
         }
 
@@ -146,7 +146,6 @@ namespace Ex03.GarageLogic.Logic
         {
             return GetCustomerCard(i_Plate).ToString();
         }
-
 
         public static void InflateWheels(string i_Plate)
         {
@@ -160,21 +159,3 @@ namespace Ex03.GarageLogic.Logic
         }
     }
 }
-
-
-
-
-
-//    foreach (var vehicle in VehicleManager<Vehicle>.SupportedVehicles)
-//    {
-//        if (curVehicle.GetType() == vehicle)
-//        {
-//            Console.WriteLine(vehicle.Name + " GGGGGGGOOOOOOOOOOOODDDDDDDDDDDDDDD");
-//            Console.ReadLine();
-//        }
-//    }
-//}
-//else
-//{
-//    //TODO: Throw Exception
-//}

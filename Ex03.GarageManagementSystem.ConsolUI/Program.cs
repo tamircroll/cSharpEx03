@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ex02.ConsoleUtils;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Logic;
 using Ex03.GarageLogic.Vehicles;
@@ -19,13 +20,13 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static void Main(string[] args)
         {
-            Dictionary<string, CustomerCard> allVehicles = new Dictionary<string, CustomerCard>();
-            Wheel wheel = new Wheel("hob", 4f, 7f);
-            FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 10, wheel);
-            ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 1.2f, wheel);
-
-            GarageLogicHandler.InsertVehicle(car, "", "");
-            GarageLogicHandler.InsertVehicle(car2, "Tamir", "21324354");
+//            Dictionary<string, CustomerCard> allVehicles = new Dictionary<string, CustomerCard>();
+//            Wheel wheel = new Wheel("hob", 4f, 7f);
+//            FueledCar car = new FueledCar("Toyota", "1111", Car.eColor.Green, Car.eNumOfDoors.Three, 10, wheel);
+//            ElectricCar car2 = new ElectricCar("Toyota", "2222", Car.eColor.White, Car.eNumOfDoors.Four, 1.2f, wheel);
+//
+//            GarageLogicHandler.InsertVehicle(car, "", "");
+//            GarageLogicHandler.InsertVehicle(car2, "Tamir", "21324354");
             
             while (true)
             {
@@ -74,7 +75,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static int ChooseAction()
         {
-            Ex02.ConsoleUtils.Screen.Clear();
+            Screen.Clear();
             string choiseStr, msg = "Please choose the action you like to perform and press Enter:";
             char choise;
 
@@ -101,7 +102,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                 }
 
-                Ex02.ConsoleUtils.Screen.Clear();
+                Screen.Clear();
                 msg = "invalid input, please choose again:";
             }
 

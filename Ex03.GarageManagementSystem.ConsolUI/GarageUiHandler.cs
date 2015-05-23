@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using Ex02.ConsoleUtils;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Logic;
+using Ex03.GarageLogic.Logic.VhicleCreator;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -8,7 +11,18 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void InsertNewCar()
         {
-            //TODO!!!!
+            FuledCarCreator c = new FuledCarCreator();
+
+            foreach (string param in c.ParamsList)  // בעיה! אני משנה את הפרמטרים תוך כדי ריצה!!!
+            {
+                Console.WriteLine("Please Choose {0}", param);
+                c.ParamsDic.Add(param, Console.ReadLine());
+            }
+
+            CustomerCard v = c.InsertVehicle();
+
+            Console.WriteLine(v);
+            Console.ReadLine();
         }
 
         public static void ShowAllPlates()
@@ -17,7 +31,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             {
                 int filterBy;
 
-                Ex02.ConsoleUtils.Screen.Clear();
+                Screen.Clear();
                 try
                 {
                     bool toShowRepairing, toShowRepaired, toShowPaid;
@@ -29,10 +43,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 4. Paid");
                     string filterByStr = Console.ReadLine();
                     bool isNumber = int.TryParse(filterByStr, out filterBy);
-
                     if (!isNumber)
                     {
-                        throw new ArgumentException("The input is not a number");
+                        throw new FormatException("The input is not a number");
                     }
 
                     if (filterBy < 1 || filterBy > 4)
@@ -44,7 +57,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     toShowRepaired = filterBy == 1 || filterBy == 3;
                     toShowPaid = filterBy == 1 || filterBy == 4;
 
-                    Ex02.ConsoleUtils.Screen.Clear();
+                    Screen.Clear();
                     Console.WriteLine(GarageLogicHandler.showPlates(toShowRepairing, toShowRepaired, toShowPaid));
                     Console.ReadLine();
                     break;
@@ -59,7 +72,8 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
                     Console.WriteLine(
                         @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", msg);
+Please press 'B' to go back to menu or any other thing to try again.", 
+                                                                     msg);
                     string choice = Console.ReadLine().ToLower();
 
                     if (choice == "b")
@@ -76,7 +90,7 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
             {
                 try
                 {
-                    Ex02.ConsoleUtils.Screen.Clear();
+                    Screen.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
                     string allDetails = GarageLogicHandler.ShowAllVehicleDetails(plate);
@@ -97,7 +111,8 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
 
                     Console.WriteLine(
                         @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", msg);
+Please press 'B' to go back to menu or any other thing to try again.", 
+                                                                     msg);
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "b")
                     {
@@ -109,12 +124,11 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
 
         public static void ChangeStatus()
         {
-            while(true){
-                int statusInt;
-
+            while(true)
+            {
                 try
                 {
-                    Ex02.ConsoleUtils.Screen.Clear();
+                    Screen.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
                     Console.WriteLine(
@@ -123,10 +137,11 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
 2. Repaired
 3. Paid");
                     string status = Console.ReadLine();
+                    int statusInt;
                     bool isNumber = int.TryParse(status, out statusInt);
                     if (!isNumber)
                     {
-                        throw new ArgumentException("The input is not a number");
+                        throw new FormatException("The input is not a number");
                     }
 
                     statusInt--;
@@ -146,7 +161,8 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
 
                     Console.WriteLine(
                         @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", msg);
+Please press 'B' to go back to menu or any other thing to try again.", 
+                                                                     msg);
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "b")
                     {
@@ -158,10 +174,11 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
 
         public static void InflateWheels()
         {
-            while(true){
+            while(true)
+            {
                 try
                 {
-                    Ex02.ConsoleUtils.Screen.Clear();
+                    Screen.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
                     GarageLogicHandler.InflateWheels(plate);
@@ -177,7 +194,8 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
 
                     Console.WriteLine(
                         @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", msg);
+Please press 'B' to go back to menu or any other thing to try again.",
+                                                                     msg);
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "b")
                     {

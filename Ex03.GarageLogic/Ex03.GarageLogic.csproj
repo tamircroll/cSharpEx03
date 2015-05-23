@@ -37,18 +37,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ValueOutOfRangeException.cs" />
-    <Compile Include="Abstracts\Vehicle.cs" />
+    <Compile Include="AbstractsAndCompositions\Vehicle.cs" />
     <Compile Include="Logic\CustomerCard.cs" />
     <Compile Include="Logic\GarageLogicHandler.cs" />
-    <Compile Include="VehicleManager.cs" />
-    <Compile Include="Abstracts\Car.cs" />
-    <Compile Include="Abstracts\Electric.cs" />
-    <Compile Include="Not Abstracts Vehicles\ElectricCar.cs" />
-    <Compile Include="Abstracts\Fueled.cs" />
-    <Compile Include="Abstracts\Motorcycle.cs" />
-    <Compile Include="Not Abstracts Vehicles\Truck.cs" />
-    <Compile Include="Not Abstracts Vehicles\FueledCar.cs" />
-    <Compile Include="Abstracts\Wheel.cs" />
+    <Compile Include="VhicleCreator\CarCreator.cs" />
+    <Compile Include="VhicleCreator\FuledCarCreator.cs" />
+    <Compile Include="VhicleCreator\VehicleCreator.cs" />
+    <Compile Include="Vehicles\ElectricMotorcycle.cs" />
+    <Compile Include="Vehicles\FueledMotorcycle.cs" />
+    <Compile Include="VhicleCreator\VehicleManager.cs" />
+    <Compile Include="AbstractsAndCompositions\Car.cs" />
+    <Compile Include="AbstractsAndCompositions\Electric.cs" />
+    <Compile Include="Vehicles\ElectricCar.cs" />
+    <Compile Include="AbstractsAndCompositions\Fueled.cs" />
+    <Compile Include="AbstractsAndCompositions\Motorcycle.cs" />
+    <Compile Include="Vehicles\FueledTruck.cs" />
+    <Compile Include="AbstractsAndCompositions\Truck.cs" />
+    <Compile Include="Vehicles\FueledCar.cs" />
+    <Compile Include="AbstractsAndCompositions\Wheel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -9,26 +9,23 @@ namespace Ex03.GarageLogic
         protected readonly string r_Model;
         protected List<Wheel> m_Wheels;
         protected bool? m_IsElectric;
-        private int m_NumOfWheels;
-        private float m_MaxWheelAirPrusre;
 
-        public Vehicle(string i_Model, string i_PlateNumber, Wheel i_wheel, int i_NumOfWheels, float i_MaxWheelAirPresure)
+        public Vehicle(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure,
+             float i_MaxWheelAirPresure, int i_NumOfWheels)
         {
             r_Model = i_Model;
             r_PlateNumber = i_PlateNumber;
-            m_NumOfWheels = i_NumOfWheels;
-            m_MaxWheelAirPrusre = i_MaxWheelAirPresure;
             SetIsElectric();
-            setWheels(i_wheel);
+            setWheels(i_WheelManufacturer, i_AirPressure, i_MaxWheelAirPresure, i_NumOfWheels);
         }
 
-        private void setWheels(Wheel i_Wheel)
+        private void setWheels(string i_WheelManufacturer, float i_AirPressure, float i_MaxWheelAirPresure, int i_NumOfWheels)
         {
-            m_Wheels = new List<Wheel>();
+            Wheels = new List<Wheel>();
 
-            for (int i = 0; i < m_NumOfWheels; i++)
+            for (int i = 0; i < i_NumOfWheels; i++)
             {
-                Wheel wheelToAdd = new Wheel(i_Wheel.Manufacturer, i_Wheel.AirPressure, i_Wheel.MaxAirPressure);
+                Wheel wheelToAdd = new Wheel(i_WheelManufacturer, i_AirPressure, i_MaxWheelAirPresure);
                 m_Wheels.Add(wheelToAdd);
             }
         }
@@ -52,16 +49,6 @@ namespace Ex03.GarageLogic
         public bool? IsElectric
         {
             get { return m_IsElectric; }
-        }
-
-        public int NumOfWheels
-        {
-            get { return m_NumOfWheels; }
-        }
-
-        public float MaxWheelAirPrusre
-        {
-            get { return m_MaxWheelAirPrusre; }
         }
 
         public override bool Equals(object obj)
@@ -115,7 +102,8 @@ Wheel {1}:
 Model: {1}{2}
 Percent of energy left: {3}",
                             r_PlateNumber,
-                            Model, wheelsInfo,
+                            Model,
+                            wheelsInfo,
                             PercentOfEnergyLeft());
         }
     }

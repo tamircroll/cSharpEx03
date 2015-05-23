@@ -12,8 +12,9 @@
         {
             if (i_MountOfFuel > i_MaxFuel)
             {
-                throw new ValueOutOfRangeException(i_MountOfFuel,i_MaxFuel, 0);
+                throw new ValueOutOfRangeException(i_MountOfFuel, i_MaxFuel, 0);
             }
+
             r_FuelType = i_FuelType;
             m_MountOfFuel = i_MountOfFuel;
             r_MaxFuel = i_MaxFuel;

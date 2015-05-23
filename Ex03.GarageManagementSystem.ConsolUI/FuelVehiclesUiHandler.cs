@@ -1,4 +1,5 @@
 ﻿using System;
+using Ex02.ConsoleUtils;
 using Ex03.GarageLogic.Logic;
 using Ex03.GarageLogic.Vehicles;
 
@@ -8,7 +9,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void UiFuelUp()
         {
-            String plateNumber;
+            string plateNumber;
             float mountToFill;
             Fueled.eFuelType fuelType;
 
@@ -16,7 +17,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             {
                 int fuelTypeIndex = 1;
 
-                Ex02.ConsoleUtils.Screen.Clear();
+                Screen.Clear();
                 Console.WriteLine("Please enter required plate numer");
                 plateNumber = Console.ReadLine();
                 try
@@ -30,16 +31,14 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
                     int fuelTypeValue;
                     string fuelTypeStr = Console.ReadLine();
-                    bool isNumber = int.TryParse(fuelTypeStr,out fuelTypeValue);
-                    if (isNumber)
+                    bool isNumber = int.TryParse(fuelTypeStr, out fuelTypeValue);
+                    
+                    if (!isNumber)
                     {
-                        fuelTypeValue--;
-                    }
-                    else
-                    {
-                        throw new ArgumentException("The Entered fuel type value is not a number");
+                        throw new FormatException("The Entered fuel type value is not a number");
                     }
 
+                    fuelTypeValue--;
                     fuelType = GarageLogicHandler.IntToFuelType(fuelTypeValue);
 
                     Console.WriteLine("Please enter how many liters of fuel you would like to fill:");
@@ -59,13 +58,15 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     string msg = e.Message;
 
-                    if (e.InnerException!= null)
+                    if (e.InnerException != null)
                     {
                         msg = e.InnerException.Message;
                     }
+
                     Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", msg);
+Please press 'B' to go back to menu or any other thing to try again.",
+                                                                     msg);
                     string choice = Console.ReadLine().ToLower();
 
                     if (choice == "b")
@@ -77,4 +78,3 @@ Please press 'B' to go back to menu or any other thing to try again.", msg);
         }
     }
 }
-    

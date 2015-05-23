@@ -1,13 +1,9 @@
-﻿using System.Runtime.CompilerServices;
-using Ex03.GarageLogic;
-using Ex03.GarageLogic.Vehicles;
+﻿using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
-
 
     // לנסות להחזיק רשימה של מחלקות
 

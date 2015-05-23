@@ -43,7 +43,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public override string ToString()
         {
-            return String.Format(
+            return string.Format(
 @"{0}Owners: {1}
 Phone: {2}
 Status: {3}

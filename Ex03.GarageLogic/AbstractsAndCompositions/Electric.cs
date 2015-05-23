@@ -13,6 +13,7 @@ namespace Ex03.GarageLogic.Vehicles
             {
                 throw new ValueOutOfRangeException(i_RemainBatteryTime, i_MaxBattery, 0);
             }
+
             m_RemainBatteryTime = i_RemainBatteryTime;
             r_MaxBattery = i_MaxBattery;
         }
@@ -24,7 +25,7 @@ namespace Ex03.GarageLogic.Vehicles
 
         public void ChargeBattery(float i_ToCharge)
         {
-            float batteryAfterCharge = m_RemainBatteryTime + (i_ToCharge/60);
+            float batteryAfterCharge = m_RemainBatteryTime + (i_ToCharge / 60);
 
             if (i_ToCharge <= 0)
             {

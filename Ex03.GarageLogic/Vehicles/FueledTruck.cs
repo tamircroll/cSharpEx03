@@ -1,17 +1,15 @@
-﻿using Ex03.GarageLogic.Vehicles;
-
-namespace Ex03.GarageLogic.Not_Abstracts_Vehicles
+﻿namespace Ex03.GarageLogic.Vehicles
 {
-    public class FueledMotorcycle : Motorcycle
+    public class FueledTruck : Truck
     {
-        private const float k_MaxFuelTankInLiters = 35;
+        private const float k_MaxFuelTankInLiters = 170;
+        private const Fueled.eFuelType k_FuelType = Fueled.eFuelType.Soler;
         private readonly Fueled r_FuelEngine;
 
-        public FueledMotorcycle(string i_Model, string i_PlateNumber, Wheel i_Wheel, eLicense i_License, int i_Engine,
-            float i_MountOfFuel, float i_MaxWheelAirPresure)
-            : base(i_Model, i_PlateNumber, i_Wheel, i_License, i_Engine, i_MaxWheelAirPresure)
+        public FueledTruck(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MountOfFuel, bool i_DangerousMaterial, float i_CarryWeight) : 
+            base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, i_DangerousMaterial, i_CarryWeight)
         {
-            r_FuelEngine = new Fueled(Fueled.eFuelType.Octan96, i_MountOfFuel, k_MaxFuelTankInLiters);
+            r_FuelEngine = new Fueled(k_FuelType, i_MountOfFuel, k_MaxFuelTankInLiters);
         }
 
         public Fueled.eFuelType FuelType()

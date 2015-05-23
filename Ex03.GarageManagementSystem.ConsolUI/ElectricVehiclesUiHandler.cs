@@ -1,4 +1,5 @@
 ﻿using System;
+using Ex02.ConsoleUtils;
 using Ex03.GarageLogic.Logic;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
@@ -7,14 +8,12 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void Charge()
         {
-            String plateNumber;
+            string plateNumber;
             float minutesToFill;
 
             while (true)
             {
-                int fuelTypeIndex = 1;
-
-                Ex02.ConsoleUtils.Screen.Clear();
+                Screen.Clear();
                 Console.WriteLine("Please enter required plate numer");
                 plateNumber = Console.ReadLine();
                 try
@@ -25,7 +24,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     bool isNumber = float.TryParse(minutesToFillStr, out minutesToFill);
                     if (!isNumber)
                     {
-                        throw new ArgumentException("The Entered mount of liters is not a number");
+                        throw new FormatException("The Entered mount of liters is not a number");
                     }
 
                     GarageLogicHandler.ChargeBattery(plateNumber, minutesToFill);
@@ -40,9 +39,11 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     {
                         msg = e.InnerException.Message;
                     }
+
                     Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", msg);
+Please press 'B' to go back to menu or any other thing to try again.",
+                                                                     msg);
                     string choice = Console.ReadLine().ToLower();
 
                     if (choice == "b")
