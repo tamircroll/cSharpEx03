@@ -10,6 +10,11 @@ namespace Ex03.GarageLogic
 
         public Wheel(string i_Manufacturer, float i_AirPressure, float i_MaxAirPressure)
         {
+            if (i_AirPressure > i_MaxAirPressure)
+            {
+                throw new ValueOutOfRangeException("air pressure",i_AirPressure,i_MaxAirPressure,0);
+            }
+
             r_Manufacturer = i_Manufacturer;
             m_AirPressure = i_AirPressure;
             m_MaxAirPressure = i_MaxAirPressure;
@@ -19,7 +24,7 @@ namespace Ex03.GarageLogic
         {
             if (toInflate + AirPressure > MaxAirPressure)
             {
-                throw new ValueOutOfRangeException(toInflate + AirPressure, MaxAirPressure, 0);
+                throw new ValueOutOfRangeException("air pressure", toInflate + AirPressure, MaxAirPressure, 0);
             }
 
             m_AirPressure += toInflate;

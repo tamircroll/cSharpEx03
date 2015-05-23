@@ -11,18 +11,51 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void InsertNewCar()
         {
-            FuledCarCreator c = new FuledCarCreator();
-
-            foreach (string param in c.ParamsList)  // בעיה! אני משנה את הפרמטרים תוך כדי ריצה!!!
+            while (true)
             {
-                Console.WriteLine("Please Choose {0}", param);
-                c.ParamsDic.Add(param, Console.ReadLine());
+                try
+                {
+                    Screen.Clear();
+                    Console.WriteLine("Please choose the type of car you want to insert:");
+                    foreach (KeyValuePair<string, string> vehicle in VehicleCreatorManager.SupportedVehicles)
+                    {
+                        Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
+                    }
+
+                    VehicleCreator c = VehicleCreatorManager.GetVehicleCreator(Console.ReadLine());
+                    foreach (string param in c.ParamsList)
+                    {
+                        Console.WriteLine("Please Choose {0}", param);
+                        c.ParamsDic.Add(param, Console.ReadLine());
+                    }
+
+                    CustomerCard customerCard = c.InsertVehicle();
+                    Screen.Clear();
+                    Console.WriteLine(GarageLogicHandler.InsertCustomerCard(customerCard));
+                    
+                    Console.ReadLine();
+                    break;
+                }
+                catch (Exception e)
+                {
+                    string msg = e.Message;
+                    if (e.InnerException != null)
+                    {
+                        msg = e.InnerException.Message;
+                    }
+
+                    Console.WriteLine(
+@"{0}.
+Please press 'B' to go back to menu or any other thing to try again.",
+                                                                     msg);
+                    string choice = Console.ReadLine().ToLower();
+
+                    if (choice == "b")
+                    {
+                        break;
+                    }
+                }
             }
-
-            CustomerCard v = c.InsertVehicle();
-
-            Console.WriteLine(v);
-            Console.ReadLine();
         }
 
         public static void ShowAllPlates()
@@ -71,7 +104,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
 
                     Console.WriteLine(
-                        @"{0}.
+@"{0}.
 Please press 'B' to go back to menu or any other thing to try again.", 
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
@@ -95,7 +128,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     string plate = Console.ReadLine();
                     string allDetails = GarageLogicHandler.ShowAllVehicleDetails(plate);
 
-                    Ex02.ConsoleUtils.Screen.Clear();
+                    Screen.Clear();
                     Console.WriteLine(allDetails);
                     Console.ReadLine();
                     break;
@@ -110,7 +143,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     }
 
                     Console.WriteLine(
-                        @"{0}.
+@"{0}.
 Please press 'B' to go back to menu or any other thing to try again.", 
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();

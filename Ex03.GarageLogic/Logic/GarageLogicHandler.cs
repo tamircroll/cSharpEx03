@@ -31,17 +31,17 @@ namespace Ex03.GarageLogic.Logic
             return GetCustomerCard(i_Plate).Vehicle;
         }
 
-        public static string InsertVehicle(Vehicle vehicle, string i_Owners, string Phone)
+        public static string InsertCustomerCard(CustomerCard i_CustomerCard)
         {
-            string msg = string.Format("Car with plate {0} added", vehicle.PlateNumber);
+            string msg = string.Format("Car with plate {0} added", i_CustomerCard.Vehicle.PlateNumber);
 
-            if (sr_AllVehicles.ContainsKey(vehicle.PlateNumber))
+            if (sr_AllVehicles.ContainsKey(i_CustomerCard.Vehicle.PlateNumber))
             {
-                GetCustomerCard(vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
-                msg = string.Format("Car with plate {0} changed to 'Repairing' state", vehicle.PlateNumber);
+                GetCustomerCard(i_CustomerCard.Vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
+                msg = string.Format("Car with plate {0} changed to 'Repairing' state", i_CustomerCard.Vehicle.PlateNumber);
             }
-            
-            sr_AllVehicles.Add(vehicle.PlateNumber, new CustomerCard(i_Owners, Phone, vehicle));
+
+            sr_AllVehicles.Add(i_CustomerCard.Vehicle.PlateNumber, i_CustomerCard);
             
             return msg;
         }
@@ -76,7 +76,7 @@ namespace Ex03.GarageLogic.Logic
         {
             if (i_FuelTypeInt < 0 || i_FuelTypeInt >= Enum.GetValues(typeof(Fueled.eFuelType)).Length)
             {
-                throw new ValueOutOfRangeException(i_FuelTypeInt + 1, 1, Enum.GetValues(typeof(Fueled.eFuelType)).Length);
+                throw new ValueOutOfRangeException("fuel type", i_FuelTypeInt + 1, 1, Enum.GetValues(typeof(Fueled.eFuelType)).Length);
             }
 
             return (Fueled.eFuelType) i_FuelTypeInt;

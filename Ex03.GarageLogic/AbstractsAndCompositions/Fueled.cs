@@ -6,17 +6,17 @@
     {
         private readonly float r_MaxFuel;
         private readonly eFuelType r_FuelType;
-        private float m_MountOfFuel;
+        private float m_LitersOfFuel;
 
-        public Fueled(eFuelType i_FuelType, float i_MountOfFuel, float i_MaxFuel)
+        public Fueled(eFuelType i_FuelType, float i_LitersOfFuel, float i_MaxFuel)
         {
-            if (i_MountOfFuel > i_MaxFuel)
+            if (i_LitersOfFuel > i_MaxFuel)
             {
-                throw new ValueOutOfRangeException(i_MountOfFuel, i_MaxFuel, 0);
+                throw new ValueOutOfRangeException("liters of fuel", i_LitersOfFuel, i_MaxFuel, 0);
             }
 
             r_FuelType = i_FuelType;
-            m_MountOfFuel = i_MountOfFuel;
+            m_LitersOfFuel = i_LitersOfFuel;
             r_MaxFuel = i_MaxFuel;
         }
 
@@ -25,14 +25,14 @@
             get { return r_FuelType; }
         }
 
-        public float MountOfFuel
+        public float LitersOfFuel
         {
-            get { return m_MountOfFuel; }
+            get { return m_LitersOfFuel; }
         }
 
         public float PrecentOfEnergyLeft()
         {
-            return MountOfFuel / MaxFuel;
+            return LitersOfFuel / MaxFuel;
         }
 
         public void FuelUp(float i_ToFuel, eFuelType i_FuelType)
@@ -42,20 +42,18 @@
                 throw new ArgumentException("Wrong fuel Type");
             }
 
-            float fuelAfterFueling = m_MountOfFuel + i_ToFuel;
+            float fuelAfterFueling = m_LitersOfFuel + i_ToFuel;
             if (i_ToFuel <= 0)
             {
                 throw new ArgumentException("The mount to fuel have to be possitive");
             }
 
-            if (fuelAfterFueling <= r_MaxFuel && fuelAfterFueling >= 0)
+            if (fuelAfterFueling > r_MaxFuel)
             {
-                m_MountOfFuel = fuelAfterFueling;
+                throw new ValueOutOfRangeException("Liters after fueling", fuelAfterFueling, r_MaxFuel, 0);
             }
-            else
-            {
-                throw new ValueOutOfRangeException(fuelAfterFueling, r_MaxFuel, 0);
-            }
+
+            m_LitersOfFuel = fuelAfterFueling;
         }
 
         public float MaxFuel
@@ -69,7 +67,7 @@
 @"Mount of fuel: {0}
 Fuel type: {1}
 Max fuel: {2}",
-              MountOfFuel,
+              LitersOfFuel,
               FuelType.ToString(),
               MaxFuel);
         }

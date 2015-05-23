@@ -19,7 +19,7 @@
 
         public float MountOfFuel()
         {
-            return r_FuelEngine.MountOfFuel;
+            return r_FuelEngine.LitersOfFuel;
         }
 
         public void FuelUp(float i_ToFuel, Fueled.eFuelType i_FuelType)

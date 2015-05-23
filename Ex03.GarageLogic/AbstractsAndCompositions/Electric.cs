@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic.Vehicles
         {
             if (i_RemainBatteryTime > i_MaxBattery)
             {
-                throw new ValueOutOfRangeException(i_RemainBatteryTime, i_MaxBattery, 0);
+                throw new ValueOutOfRangeException("maximum battery", i_RemainBatteryTime, i_MaxBattery, 0);
             }
 
             m_RemainBatteryTime = i_RemainBatteryTime;

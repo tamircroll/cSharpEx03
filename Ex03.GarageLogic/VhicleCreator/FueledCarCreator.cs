@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Text;
 using Ex03.GarageLogic.Vehicles;
+using Ex03.GarageManagementSystem.ConsolUI;
 
 namespace Ex03.GarageLogic.Logic.VhicleCreator
 {
-    public abstract class CarCreator : VehicleCreator
+    public class FueledCarCreator : FueledVehicleCreator
     {
-        private int m_NumOfDoorsInt;
-        private int m_ColorInt;
+        protected int m_NumOfDoorsInt;
+        protected int m_ColorInt;
         protected string m_ColorString;
         protected Car.eColor m_Color;
         protected Car.eNumOfDoors m_NumOfDoors;
@@ -74,6 +75,24 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
             }
 
             m_Color = (Car.eColor)m_ColorInt;
+        }
+
+        public override CustomerCard InsertVehicle()
+        {
+            initBaseVehicleParams();
+            InitEngineParams();
+            InitSpecificVehicleParams();
+
+            Vehicle vehicle = new FueledCar(
+                m_Model,
+                m_PlateNumber,
+                m_Manufacturer,
+                m_AirPressure,
+                m_Color,
+                m_NumOfDoors,
+                m_MountOfFuel);
+
+            return new CustomerCard(m_Owners, m_Phone, vehicle);
         }
     }
 }
