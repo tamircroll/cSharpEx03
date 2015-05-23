@@ -16,8 +16,6 @@ namespace Ex03.GarageLogic.VhicleCreator
         protected string m_EngineStr;
         protected int m_Engine;
         protected string m_LicenseStr = setLicenseField();
-        protected string m_ColorString;
-        protected Car.eColor m_Color;
         protected Car.eNumOfDoors m_NumOfDoors;
 
         protected override void AddSpecificVehicleParams()
@@ -30,10 +28,10 @@ namespace Ex03.GarageLogic.VhicleCreator
         {
             StringBuilder str = new StringBuilder();
 
-            str.Append(string.Format("License:{0}", System.Environment.NewLine));
+            str.Append(string.Format("License:{0}", Environment.NewLine));
             foreach (Motorcycle.eLicense color in Enum.GetValues(typeof(Motorcycle.eLicense)))
             {
-                str.Append(string.Format("{0}. {1}{2}", (int) color, color, System.Environment.NewLine));
+                str.Append(string.Format("{0}. {1}{2}", (int) color, color, Environment.NewLine));
             }
 
             return str.ToString();

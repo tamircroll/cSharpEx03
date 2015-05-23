@@ -53,8 +53,8 @@ namespace Ex03.GarageLogic
         public override bool Equals(object obj)
         {
             bool isEqual = false;
-
             Vehicle vehicle = obj as Vehicle;
+
             if (vehicle != null)
             {
                 if (vehicle.PlateNumber == PlateNumber)
@@ -98,7 +98,9 @@ Wheel {1}:
 
             return string.Format(
 @"Plate: {0}
-Model: {1}{2}
+Model: {1}
+{2}
+
 Percent of energy left: {3}",
                             r_PlateNumber,
                             Model,

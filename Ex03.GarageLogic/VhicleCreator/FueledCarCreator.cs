@@ -25,10 +25,10 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
         {
             StringBuilder str = new StringBuilder();
 
-            str.Append(string.Format("Color:{0}", System.Environment.NewLine));
+            str.Append(string.Format("Color:{0}", Environment.NewLine));
             foreach (Car.eColor color in Enum.GetValues(typeof(Car.eColor)))
             {
-                str.Append(String.Format("{0}. {1}{2}", (int) color, color, System.Environment.NewLine));
+                str.Append(string.Format("{0}. {1}{2}", (int) color, color, Environment.NewLine));
             }
 
             return str.ToString();
@@ -38,10 +38,10 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
         {
             StringBuilder str = new StringBuilder();
 
-            str.Append(string.Format("Number of doors:{0}", System.Environment.NewLine));
+            str.Append(string.Format("Number of doors:{0}", Environment.NewLine));
             foreach (Car.eNumOfDoors numOfDoors in Enum.GetValues(typeof(Car.eNumOfDoors)))
             {
-                str.Append(String.Format("{0}. {1}{2}", (int) numOfDoors, numOfDoors, System.Environment.NewLine));
+                str.Append(string.Format("{0}. {1}{2}", (int) numOfDoors, numOfDoors, Environment.NewLine));
             }
 
             return str.ToString();

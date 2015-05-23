@@ -31,7 +31,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 case "2":
                     return null;
                 case "3":
-                    return null;
+                    return new FueledTruckCreator();
                 case "4":
                     return new FueledMotorcycleCreator();
                 case "5":
