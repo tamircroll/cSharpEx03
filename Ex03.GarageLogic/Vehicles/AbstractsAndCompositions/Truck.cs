@@ -3,12 +3,11 @@
     public abstract class Truck : Vehicle
     {
         private const int k_NumOfWheels = 16;
-        private const float k_MaxWheelAirPrusre = 25;
         protected bool m_DangerousMaterial;
         protected float m_CarryWeight;
 
-        public Truck(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, bool i_DangerousMaterial, float i_CarryWeight)
-            : base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, k_MaxWheelAirPrusre, k_NumOfWheels)
+        public Truck(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MaxPressure, bool i_DangerousMaterial, float i_CarryWeight)
+            : base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, i_MaxPressure, k_NumOfWheels)
         {
             m_DangerousMaterial = i_DangerousMaterial;
             m_CarryWeight = i_CarryWeight;

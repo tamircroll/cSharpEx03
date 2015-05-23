@@ -4,10 +4,11 @@
     {
         private const float k_MaxFuelTankInLiters = 170;
         private const Fueled.eFuelType k_FuelType = Fueled.eFuelType.Soler;
+        private const float k_MaxWheelAirPrusre = 25;
         private readonly Fueled r_FuelEngine;
         
         public FueledTruck(string i_Model, string i_PlateNumber, string i_WheelManufacturer, float i_AirPressure, float i_MountOfFuel, bool i_DangerousMaterial, float i_CarryWeight) :
-                base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, i_DangerousMaterial, i_CarryWeight)
+            base(i_Model, i_PlateNumber, i_WheelManufacturer, i_AirPressure, k_MaxWheelAirPrusre, i_DangerousMaterial, i_CarryWeight)
         {
             r_FuelEngine = new Fueled(k_FuelType, i_MountOfFuel, k_MaxFuelTankInLiters);
         }
