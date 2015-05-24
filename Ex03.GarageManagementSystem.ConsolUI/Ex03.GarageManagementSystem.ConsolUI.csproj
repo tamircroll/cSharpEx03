@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ElectricVehiclesUiHandler.cs" />
-    <Compile Include="FuelVehiclesUiHandler.cs" />
+    <Compile Include="FueledVehiclesUiHandler.cs" />
     <Compile Include="GarageUiHandler.cs" />
     <Compile Include="Program.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>

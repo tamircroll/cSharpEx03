@@ -5,7 +5,7 @@ using Ex03.GarageLogic.Vehicles;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
-    public class FuelVehiclesUiHandler
+    public class FueledVehiclesUiHandler
     {
         public static void UiFuelUp()
         {

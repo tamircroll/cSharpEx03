@@ -9,13 +9,19 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
     public class VehicleCreatorManager
     {
+        private const string k_FuledCarIndex = "1";
+        private const string k_ElectricCarIndex = "2";
+        private const string k_FueledMotorcycleIndex = "3";
+        private const string k_ElectricMotorcycleIndex = "4";
+        private const string k_FueledTruckIndex = "5";
+
         public static Dictionary<string, string> m_SupportedVehicles = new Dictionary<string, string>
         {
-            { "1", "Fuled Car" },
-            { "2", "Electric Car" },
-            { "3", "Fuled Motorcycle" },
-            { "4", "Electric Motorcycle" },
-            { "5", "Track" }
+            { k_FuledCarIndex, "Fuled Car" },
+            { k_ElectricCarIndex, "Electric Car" },
+            { k_FueledMotorcycleIndex, "Fuled Motorcycle" },
+            { k_ElectricMotorcycleIndex, "Electric Motorcycle" },
+            { k_FueledTruckIndex, "Track" }
         };
 
         public static Dictionary<string, string> SupportedVehicles
@@ -27,15 +33,15 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         {
             switch (i_VehicleIndex)
             {
-                case "1":
+                case k_FuledCarIndex:
                     return new FueledCarCreator();
-                case "2":
+                case k_ElectricCarIndex:
                     return new ElectricCarCreator();
-                case "3":
+                case k_FueledMotorcycleIndex:
                     return new FueledMotorcycleCreator();
-                case "4":
+                case k_ElectricMotorcycleIndex:
                     return new ElectricMotorcycleCreator();
-                case "5":
+                case k_FueledTruckIndex:
                     return new FueledTruckCreator();
             }
             

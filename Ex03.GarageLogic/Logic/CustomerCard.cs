@@ -2,8 +2,6 @@
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
-    using System;
-
     public class CustomerCard
     {
         private readonly string r_Owners;
