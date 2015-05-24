@@ -31,21 +31,29 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static VehicleCreator GetVehicleCreator(string i_VehicleIndex)
         {
+            VehicleCreator vehicleCreator;
             switch (i_VehicleIndex)
             {
                 case k_FuledCarIndex:
-                    return new FueledCarCreator();
+                    vehicleCreator = new FueledCarCreator();
+                    break;
                 case k_ElectricCarIndex:
-                    return new ElectricCarCreator();
+                    vehicleCreator = new ElectricCarCreator();
+                    break;
                 case k_FueledMotorcycleIndex:
-                    return new FueledMotorcycleCreator();
+                    vehicleCreator = new FueledMotorcycleCreator();
+                    break;
                 case k_ElectricMotorcycleIndex:
-                    return new ElectricMotorcycleCreator();
+                    vehicleCreator = new ElectricMotorcycleCreator();
+                    break;
                 case k_FueledTruckIndex:
-                    return new FueledTruckCreator();
+                    vehicleCreator = new FueledTruckCreator();
+                    break;
+                default:
+                    throw new FormatException("The vehicle choice is not a number in the given range");
             }
-            
-            throw new FormatException("The vehicle choice is not a number in the given range");
+
+            return vehicleCreator;
         }
     }
 }
