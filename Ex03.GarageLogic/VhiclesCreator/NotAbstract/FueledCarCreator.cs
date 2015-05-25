@@ -13,8 +13,8 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
 
         protected override void AddSpecificVehicleParams()
         {
-            ParamsList.Add(m_NumOfDoorsStr);
-            ParamsList.Add(m_Colors);
+            ParamsDic.Add(m_NumOfDoorsStr, null);
+            ParamsDic.Add(m_Colors, null);
         }
 
         protected override void InitSpecificVehicleParams()

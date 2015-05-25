@@ -7,7 +7,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     using System;
     using System.Collections.Generic;
 
-    public class VehicleCreatorManager
+    public class VehicleCreatorFactory
     {
         private const string k_FuledCarIndex = "1";
         private const string k_ElectricCarIndex = "2";
@@ -15,38 +15,38 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         private const string k_ElectricMotorcycleIndex = "4";
         private const string k_FueledTruckIndex = "5";
 
-        public static Dictionary<string, string> m_SupportedVehicles = new Dictionary<string, string>
+        public static Dictionary<int, string> m_SupportedVehicles = new Dictionary<int, string>
         {
-            { k_FuledCarIndex, "Fuled Car" },
-            { k_ElectricCarIndex, "Electric Car" },
-            { k_FueledMotorcycleIndex, "Fuled Motorcycle" },
-            { k_ElectricMotorcycleIndex, "Electric Motorcycle" },
-            { k_FueledTruckIndex, "Track" }
+            { (int)eVehicleType.FuledCar, "Fuled Car" },
+            { (int)eVehicleType.ElectricCar, "Electric Car" },
+            { (int)eVehicleType.FueledMotorcycle, "Fuled Motorcycle" },
+            { (int)eVehicleType.ElectricMotorcycle, "Electric Motorcycle" },
+            { (int)eVehicleType.FueledTruck, "Track" }
         };
 
-        public static Dictionary<string, string> SupportedVehicles
+        public static Dictionary<int, string> SupportedVehicles
         {
             get { return m_SupportedVehicles; }
         }
 
-        public static VehicleCreator GetVehicleCreator(string i_VehicleIndex)
+        public static VehicleCreator Create(int i_VehicleIndex)
         {
             VehicleCreator vehicleCreator;
-            switch (i_VehicleIndex)
+            switch ((eVehicleType)i_VehicleIndex)
             {
-                case k_FuledCarIndex:
+                case eVehicleType.FuledCar:
                     vehicleCreator = new FueledCarCreator();
                     break;
-                case k_ElectricCarIndex:
+                case eVehicleType.ElectricCar:
                     vehicleCreator = new ElectricCarCreator();
                     break;
-                case k_FueledMotorcycleIndex:
+                case eVehicleType.FueledMotorcycle:
                     vehicleCreator = new FueledMotorcycleCreator();
                     break;
-                case k_ElectricMotorcycleIndex:
+                case eVehicleType.ElectricMotorcycle:
                     vehicleCreator = new ElectricMotorcycleCreator();
                     break;
-                case k_FueledTruckIndex:
+                case eVehicleType.FueledTruck:
                     vehicleCreator = new FueledTruckCreator();
                     break;
                 default:
@@ -54,6 +54,15 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             }
 
             return vehicleCreator;
+        }
+
+        public enum eVehicleType
+        {
+            FuledCar = 1,
+            ElectricCar = 2, 
+            FueledMotorcycle = 3, 
+            ElectricMotorcycle = 4,
+            FueledTruck = 5
         }
     }
 }
