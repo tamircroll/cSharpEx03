@@ -16,6 +16,8 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static void Main(string[] args)
         {
+            Console.SetWindowSize(100, 70);
+
             while (true)
             {
                 int choise = ChooseAction();
