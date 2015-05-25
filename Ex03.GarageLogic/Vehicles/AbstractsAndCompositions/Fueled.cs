@@ -64,9 +64,9 @@
         public override string ToString()
         {
             return string.Format(
-@"Mount of fuel: {0}
+@"Mount of fuel: {0} liters
 Fuel type: {1}
-Max fuel: {2}",
+Max fuel: {2} liters",
               LitersOfFuel,
               FuelType.ToString(),
               MaxFuel);
