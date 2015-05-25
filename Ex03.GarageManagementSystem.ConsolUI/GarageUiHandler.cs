@@ -17,7 +17,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     Screen.Clear();
                     Console.WriteLine("Please choose the type of car you want to insert:");
-                    foreach (KeyValuePair<int, string> vehicle in VehicleCreatorManager.SupportedVehicles)
+                    foreach (KeyValuePair<int, string> vehicle in VehicleCreatorFactory.SupportedVehicles)
                     {
                         Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
                     }
@@ -31,7 +31,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                         throw new ArgumentException("The input is not a number in the range");
                     }
 
-                    VehicleCreator c = VehicleCreatorManager.GetVehicleCreator(vehicleIndex);
+                    VehicleCreator c = VehicleCreatorFactory.Create(vehicleIndex);
                     List<string> paramsQuestions = new List<string>(c.ParamsDic.Keys);
 
                     foreach (string param in paramsQuestions)

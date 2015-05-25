@@ -7,7 +7,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     using System;
     using System.Collections.Generic;
 
-    public class VehicleCreatorManager
+    public class VehicleCreatorFactory
     {
         private const string k_FuledCarIndex = "1";
         private const string k_ElectricCarIndex = "2";
@@ -29,7 +29,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             get { return m_SupportedVehicles; }
         }
 
-        public static VehicleCreator GetVehicleCreator(int i_VehicleIndex)
+        public static VehicleCreator Create(int i_VehicleIndex)
         {
             VehicleCreator vehicleCreator;
             switch ((eVehicleType)i_VehicleIndex)
