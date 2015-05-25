@@ -9,12 +9,6 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
     public class VehicleCreatorFactory
     {
-        private const string k_FuledCarIndex = "1";
-        private const string k_ElectricCarIndex = "2";
-        private const string k_FueledMotorcycleIndex = "3";
-        private const string k_ElectricMotorcycleIndex = "4";
-        private const string k_FueledTruckIndex = "5";
-
         public static Dictionary<int, string> m_SupportedVehicles = new Dictionary<int, string>
         {
             { (int)eVehicleType.FuledCar, "Fuled Car" },
