@@ -7,7 +7,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public class FueledVehiclesUiHandler
     {
-        public static void UiFuelUp()
+        public static void UiFuelUp(GarageLogicHandler i_Logic)
         {
             string plateNumber;
             float mountToFill;
@@ -22,7 +22,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 plateNumber = Console.ReadLine();
                 try
                 {
-                    Array allFuelTypes = GarageLogicHandler.AllFuelTypes();
+                    Array allFuelTypes = i_Logic.AllFuelTypes();
                     Console.WriteLine("Please enter required fuel type");
                     foreach (Fueled.eFuelType type in allFuelTypes)
                     {
@@ -39,7 +39,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
 
                     fuelTypeValue--;
-                    fuelType = GarageLogicHandler.IntToFuelType(fuelTypeValue);
+                    fuelType = i_Logic.IntToFuelType(fuelTypeValue);
 
                     Console.WriteLine("Please enter how many liters of fuel you would like to fill:");
                     string litersToFillStr = Console.ReadLine();
@@ -50,7 +50,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                         throw new ArgumentException("The Entered mount of liters is not a number");
                     }
 
-                    GarageLogicHandler.FillFuel(plateNumber, mountToFill, fuelType);
+                    i_Logic.FillFuel(plateNumber, mountToFill, fuelType);
                     Console.WriteLine("Fuel was successfully filled");
                     Console.ReadLine();
                     break;

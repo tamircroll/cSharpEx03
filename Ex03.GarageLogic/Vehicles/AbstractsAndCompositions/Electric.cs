@@ -50,8 +50,8 @@ namespace Ex03.GarageLogic.Vehicles
         public override string ToString()
         {
             return string.Format(
-@"remain battery: {0}
-Max Battery: {1}",
+@"remain battery: {0:f} hours
+Max Battery: {1:F} hours",
                  RemainBatteryInHours,
                  MaxBattery);
         }

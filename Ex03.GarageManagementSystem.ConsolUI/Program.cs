@@ -1,4 +1,5 @@
 ﻿using Ex02.ConsoleUtils;
+using Ex03.GarageLogic.Logic;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -16,8 +17,9 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static void Main(string[] args)
         {
-            Console.SetWindowSize(100, 70);
+            GarageLogicHandler logic = new GarageLogicHandler();
 
+            Console.SetWindowSize(100, 70);
             while (true)
             {
                 int choise = ChooseAction();
@@ -26,37 +28,37 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     case k_insertVehicle:
                     {
-                        GarageUiHandler.InsertNewCar();
+                        GarageUiHandler.InsertNewCar(logic);
                         break;
                     }
                     case k_ShowAllPlates:
                     {
-                        GarageUiHandler.ShowAllPlates();
+                        GarageUiHandler.ShowAllPlates(logic);
                         break;
                     }
                     case k_ChangeState:
                     {
-                        GarageUiHandler.ChangeStatus();
+                        GarageUiHandler.ChangeStatus(logic);
                         break;
                     }
                     case k_FillWheels:
                     {
-                        GarageUiHandler.InflateWheels();
+                        GarageUiHandler.InflateWheels(logic);
                         break;
                     }
                     case k_FuelUp:
                     {
-                        FueledVehiclesUiHandler.UiFuelUp();
+                        FueledVehiclesUiHandler.UiFuelUp(logic);
                         break;
                     }
                     case k_ChargeBattery:
                     {
-                        ElectricVehiclesUiHandler.Charge();
+                        ElectricVehiclesUiHandler.Charge(logic);
                         break;
                     }
                     case k_ShowVehicleDetails:
                     {
-                        GarageUiHandler.ShowAllDetails();
+                        GarageUiHandler.ShowAllDetails(logic);
                         break;
                     }
                 }

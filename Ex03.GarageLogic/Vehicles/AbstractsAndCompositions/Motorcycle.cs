@@ -32,5 +32,16 @@
             AB,
             B1
         }
+
+        public override string ToString()
+        {
+            return string.Format(
+@"{0}
+License: {1}
+Engine Volume: {2}",
+           base.ToString(),
+           m_License,
+           m_Engine);
+        }
     }
 }

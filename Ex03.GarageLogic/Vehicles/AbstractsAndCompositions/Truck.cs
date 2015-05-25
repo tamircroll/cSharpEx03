@@ -30,7 +30,7 @@
             return string.Format(
 @"{0}
 Does carry dangerous material : {1}
-Carrying weight: {2}",
+Carrying weight: {2:F}",
                      base.ToString(),
                      DangerousMaterial, 
                      CarryWeight);

@@ -9,14 +9,14 @@ namespace Ex03.GarageLogic.Logic
 {
     public class GarageLogicHandler
     {
-        private static readonly Dictionary<string, CustomerCard> sr_AllVehicles = new Dictionary<string, CustomerCard>();
-        private static string k_FillFuelMethos = "FuelUp";
-        private static string k_ChargeBatteryMethos = "ChargeBattery";
+        private readonly Dictionary<string, CustomerCard> r_AllVehicles = new Dictionary<string, CustomerCard>();
+        private string m_FillFuelMethos = "FuelUp";
+        private string m_ChargeBatteryMethos = "ChargeBattery";
 
-        public static CustomerCard GetCustomerCard(string i_Key)
+        public CustomerCard GetCustomerCard(string i_Key)
         {
             CustomerCard customerCard;
-            bool isInGarage = sr_AllVehicles.TryGetValue(i_Key, out customerCard);
+            bool isInGarage = r_AllVehicles.TryGetValue(i_Key, out customerCard);
 
             if (!isInGarage)
             {
@@ -26,29 +26,29 @@ namespace Ex03.GarageLogic.Logic
             return customerCard;
         }
 
-        public static Vehicle GetVehicle(string i_Plate)
+        public Vehicle GetVehicle(string i_Plate)
         {
             return GetCustomerCard(i_Plate).Vehicle;
         }
 
-        public static string InsertCustomerCard(CustomerCard i_CustomerCard)
+        public string InsertCustomerCard(CustomerCard i_CustomerCard)
         {
             string msg = string.Format("Car with plate {0} added", i_CustomerCard.Vehicle.PlateNumber);
 
-            if (sr_AllVehicles.ContainsKey(i_CustomerCard.Vehicle.PlateNumber))
+            if (r_AllVehicles.ContainsKey(i_CustomerCard.Vehicle.PlateNumber))
             {
                 GetCustomerCard(i_CustomerCard.Vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
                 msg = string.Format("Car with plate {0} changed to 'Repairing' state", i_CustomerCard.Vehicle.PlateNumber);
             }
             else
             {
-                sr_AllVehicles.Add(i_CustomerCard.Vehicle.PlateNumber, i_CustomerCard);
+                r_AllVehicles.Add(i_CustomerCard.Vehicle.PlateNumber, i_CustomerCard);
             }
 
             return msg;
         }
 
-        public static void FillFuel(string i_Plate, float i_ToFill, Fueled.eFuelType i_FuelType)
+        public void FillFuel(string i_Plate, float i_ToFill, Fueled.eFuelType i_FuelType)
         {
             Vehicle curVehicle = GetVehicle(i_Plate);
             MethodInfo[] methods = curVehicle.GetType().GetMethods();
@@ -56,7 +56,7 @@ namespace Ex03.GarageLogic.Logic
 
             foreach(MethodInfo method in methods)
             {
-                if(method.Name == k_FillFuelMethos)
+                if(method.Name == m_FillFuelMethos)
                 {
                     method.Invoke(curVehicle, new object[] { i_ToFill, i_FuelType });
                     wasFuled = true;
@@ -69,12 +69,12 @@ namespace Ex03.GarageLogic.Logic
             }
         }
 
-        public static Array AllFuelTypes()
+        public Array AllFuelTypes()
         {
             return Enum.GetValues(typeof(Fueled.eFuelType));
         }
 
-        public static Fueled.eFuelType IntToFuelType(int i_FuelTypeInt)
+        public Fueled.eFuelType IntToFuelType(int i_FuelTypeInt)
         {
             if (i_FuelTypeInt < 0 || i_FuelTypeInt >= Enum.GetValues(typeof(Fueled.eFuelType)).Length)
             {
@@ -84,7 +84,7 @@ namespace Ex03.GarageLogic.Logic
             return (Fueled.eFuelType) i_FuelTypeInt;
         }
 
-        public static CustomerCard.eStatus IntToStateType(int i_StateTypeInt)
+        public CustomerCard.eStatus IntToStateType(int i_StateTypeInt)
         {
             if (i_StateTypeInt < 0 || i_StateTypeInt >= Enum.GetValues(typeof(CustomerCard.eStatus)).Length)
             {
@@ -94,7 +94,7 @@ namespace Ex03.GarageLogic.Logic
             return (CustomerCard.eStatus)i_StateTypeInt;
         }
 
-        public static void ChargeBattery(string i_Plate, float i_ToFill)
+        public void ChargeBattery(string i_Plate, float i_ToFill)
         {
             Vehicle curVehicle = GetVehicle(i_Plate);
             MethodInfo[] methods = curVehicle.GetType().GetMethods();
@@ -102,7 +102,7 @@ namespace Ex03.GarageLogic.Logic
 
             foreach (MethodInfo method in methods)
             {
-                if (method.Name == k_ChargeBatteryMethos)
+                if (method.Name == m_ChargeBatteryMethos)
                 {
                     method.Invoke(curVehicle, new object[] { i_ToFill });
                     wasCharged = true;
@@ -115,11 +115,11 @@ namespace Ex03.GarageLogic.Logic
             }
         }
 
-        public static string showPlates(bool i_ToShowRepairing, bool i_ToShowRepaired, bool i_ToShowPaid)
+        public string showPlates(bool i_ToShowRepairing, bool i_ToShowRepaired, bool i_ToShowPaid)
         {
             StringBuilder allPlates = new StringBuilder(string.Empty);
 
-            foreach (KeyValuePair<string, CustomerCard> card in sr_AllVehicles)
+            foreach (KeyValuePair<string, CustomerCard> card in r_AllVehicles)
             {
                 if (card.Value.Status == CustomerCard.eStatus.Repairing && i_ToShowRepairing)
                 {
@@ -138,18 +138,18 @@ namespace Ex03.GarageLogic.Logic
             return allPlates.ToString();
         }
 
-        public static void ChangeStatus(string i_PlatNumber, CustomerCard.eStatus i_NewStatus)
+        public void ChangeStatus(string i_PlatNumber, CustomerCard.eStatus i_NewStatus)
         {
             CustomerCard curCard = GetCustomerCard(i_PlatNumber);
             curCard.Status = i_NewStatus;
         }
 
-        public static string ShowAllVehicleDetails(string i_Plate)
+        public string ShowAllVehicleDetails(string i_Plate)
         {
             return GetCustomerCard(i_Plate).ToString();
         }
 
-        public static void InflateWheels(string i_Plate)
+        public void InflateWheels(string i_Plate)
         {
             Vehicle curVehicle = GetVehicle(i_Plate);
             List<Wheel> curWheels = curVehicle.Wheels;

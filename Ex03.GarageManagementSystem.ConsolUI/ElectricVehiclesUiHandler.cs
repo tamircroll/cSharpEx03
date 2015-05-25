@@ -6,7 +6,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public class ElectricVehiclesUiHandler
     {
-        public static void Charge()
+        public static void Charge(GarageLogicHandler i_Logic)
         {
             string plateNumber;
             float minutesToFill;
@@ -27,7 +27,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                         throw new FormatException("The Entered mount of liters is not a number");
                     }
 
-                    GarageLogicHandler.ChargeBattery(plateNumber, minutesToFill);
+                    i_Logic.ChargeBattery(plateNumber, minutesToFill);
                     Console.WriteLine("Battery was successfully charged");
                     Console.ReadLine();
                     break;

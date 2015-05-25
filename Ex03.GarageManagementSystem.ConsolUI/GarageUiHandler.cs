@@ -9,7 +9,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public static class GarageUiHandler
     {
-        public static void InsertNewCar()
+        public static void InsertNewCar(GarageLogicHandler i_Logic)
         {
             while (true)
             {
@@ -42,7 +42,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
                     CustomerCard customerCard = c.InsertVehicle();
                     Screen.Clear();
-                    Console.WriteLine(GarageLogicHandler.InsertCustomerCard(customerCard));
+                    Console.WriteLine(i_Logic.InsertCustomerCard(customerCard));
                     
                     Console.ReadLine();
                     break;
@@ -69,7 +69,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             }
         }
 
-        public static void ShowAllPlates()
+        public static void ShowAllPlates(GarageLogicHandler i_Logic)
         {
             while(true)
             {
@@ -102,7 +102,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     toShowPaid = filterBy == 1 || filterBy == 4;
 
                     Screen.Clear();
-                    Console.WriteLine(GarageLogicHandler.showPlates(toShowRepairing, toShowRepaired, toShowPaid));
+                    Console.WriteLine(i_Logic.showPlates(toShowRepairing, toShowRepaired, toShowPaid));
                     Console.ReadLine();
                     break;
                 }
@@ -128,7 +128,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             }
         }
 
-        public static void ShowAllDetails()
+        public static void ShowAllDetails(GarageLogicHandler i_Logic)
         {
             while (true)
             {
@@ -137,7 +137,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     Screen.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
-                    string allDetails = GarageLogicHandler.ShowAllVehicleDetails(plate);
+                    string allDetails = i_Logic.ShowAllVehicleDetails(plate);
 
                     Screen.Clear();
                     Console.WriteLine(allDetails);
@@ -166,7 +166,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             }
         }
 
-        public static void ChangeStatus()
+        public static void ChangeStatus(GarageLogicHandler i_Logic)
         {
             while(true)
             {
@@ -189,8 +189,8 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     }
 
                     statusInt--;
-                    CustomerCard.eStatus statusType = GarageLogicHandler.IntToStateType(statusInt);
-                    GarageLogicHandler.ChangeStatus(plate, statusType);
+                    CustomerCard.eStatus statusType = i_Logic.IntToStateType(statusInt);
+                    i_Logic.ChangeStatus(plate, statusType);
                     Console.WriteLine("Status Changed to {0}", statusType);
                     Console.ReadLine();
                     break;
@@ -216,7 +216,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             }
         }
 
-        public static void InflateWheels()
+        public static void InflateWheels(GarageLogicHandler i_Logic)
         {
             while(true)
             {
@@ -225,7 +225,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     Screen.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
-                    GarageLogicHandler.InflateWheels(plate);
+                    i_Logic.InflateWheels(plate);
                     break;
                 }
                 catch (Exception e)
