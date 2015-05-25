@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic.VhicleCreator
 
         protected override void AddEngineParams()
         {
-            ParamsList.Add(k_BatteryMinutesRemain);
+            ParamsDic.Add(k_BatteryMinutesRemain, null);
         }
 
         protected override void InitEngineParams()

@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
 
         protected override void AddEngineParams()
         {
-            ParamsList.Add(k_MountOfFuel);
+            ParamsDic.Add(k_MountOfFuel, null);
         }
 
         protected override void InitEngineParams()

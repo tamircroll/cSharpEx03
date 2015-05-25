@@ -17,16 +17,27 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     Screen.Clear();
                     Console.WriteLine("Please choose the type of car you want to insert:");
-                    foreach (KeyValuePair<string, string> vehicle in VehicleCreatorManager.SupportedVehicles)
+                    foreach (KeyValuePair<int, string> vehicle in VehicleCreatorManager.SupportedVehicles)
                     {
                         Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
                     }
+                    string vehicleIndexStr = Console.ReadLine();
+                    int vehicleIndex;
 
-                    VehicleCreator c = VehicleCreatorManager.GetVehicleCreator(Console.ReadLine());
-                    foreach (string param in c.ParamsList)
+                    bool isNumber = int.TryParse(vehicleIndexStr, out vehicleIndex);
+
+                    if (!isNumber)
+                    {
+                        throw new ArgumentException("The input is not a number in the range");
+                    }
+
+                    VehicleCreator c = VehicleCreatorManager.GetVehicleCreator(vehicleIndex);
+                    List<string> paramsQuestions = new List<string>(c.ParamsDic.Keys);
+
+                    foreach (string param in paramsQuestions)
                     {
                         Console.WriteLine("Please Choose {0}", param);
-                        c.ParamsDic.Add(param, Console.ReadLine());
+                        c.ParamsDic[param] = Console.ReadLine();
                     }
 
                     CustomerCard customerCard = c.InsertVehicle();

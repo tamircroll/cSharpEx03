@@ -16,8 +16,8 @@ namespace Ex03.GarageLogic.VhicleCreator
 
         protected override void AddSpecificVehicleParams()
         {
-            ParamsList.Add(k_CarryWeight);
-            ParamsList.Add(k_DangerousMatirials);
+            ParamsDic.Add(k_CarryWeight, null);
+            ParamsDic.Add(k_DangerousMatirials, null);
         }
 
         protected override void InitSpecificVehicleParams()

@@ -16,10 +16,8 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
         protected string m_Phone;
         protected string m_Model;
         protected string m_PlateNumber;
-        protected Wheel m_Wheel;
         protected string m_Manufacturer;
         protected float m_AirPressure;
-        private List<string> m_ParamsList = new List<string>();
         private Dictionary<string, string> m_ParamsDic = new Dictionary<string, string>();
 
         public VehicleCreator()
@@ -31,17 +29,12 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
 
         private void addVehicleParams()
         {
-            ParamsList.Add(k_Owners);
-            ParamsList.Add(k_Phone);
-            ParamsList.Add(k_Model);
-            ParamsList.Add(k_PlateNumber);
-            ParamsList.Add(k_Manufacturer);
-            ParamsList.Add(k_AirPressure);
-        }
-
-        public List<string> ParamsList
-        {
-            get { return m_ParamsList; }
+            ParamsDic.Add(k_Owners, null);
+            ParamsDic.Add(k_Phone, null);
+            ParamsDic.Add(k_Model, null);
+            ParamsDic.Add(k_PlateNumber, null);
+            ParamsDic.Add(k_Manufacturer, null);
+            ParamsDic.Add(k_AirPressure, null);
         }
 
         public Dictionary<string, string> ParamsDic

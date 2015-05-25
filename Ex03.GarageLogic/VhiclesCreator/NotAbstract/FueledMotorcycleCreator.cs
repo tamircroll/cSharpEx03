@@ -17,8 +17,8 @@ namespace Ex03.GarageLogic.VhicleCreator
 
         protected override void AddSpecificVehicleParams()
         {
-            ParamsList.Add(m_LicenseStr);
-            ParamsList.Add(k_Engine);
+            ParamsDic.Add(m_LicenseStr, null);
+            ParamsDic.Add(k_Engine, null);
         }
         
         private static string setLicenseField()
