@@ -35,10 +35,10 @@
 
         public enum eNumOfDoors : byte
         {
-            Two = 0,
-            Three = 1,
-            Four = 2,
-            Five = 3
+            Two = 1,
+            Three = 2,
+            Four = 3,
+            Five = 4
         }
 
         public override string ToString()
