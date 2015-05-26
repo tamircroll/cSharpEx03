@@ -94,7 +94,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
 
                     if (filterBy < 1 || filterBy > 4)
                     {
-                        throw new ValueOutOfRangeException(filterBy, 4, 1);
+                        throw new ValueOutOfRangeException(filterBy, 1, 4);
                     }
 
                     toShowRepairing = filterBy == 1 || filterBy == 2;

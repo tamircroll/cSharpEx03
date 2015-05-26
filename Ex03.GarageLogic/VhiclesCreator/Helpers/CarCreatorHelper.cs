@@ -43,7 +43,8 @@ namespace Ex03.GarageLogic.VhicleCreator
                 throw new FormatException("The numbers of doors input is not a number");
             }
 
-            if(numOfDoorsInt < 1 || numOfDoorsInt > Enum.GetValues(typeof(Car.eNumOfDoors)).Length)
+            if(numOfDoorsInt < (int)Enum.GetValues(typeof(Car.eNumOfDoors)).GetValue(0) 
+                || numOfDoorsInt > Enum.GetValues(typeof(Car.eNumOfDoors)).Length)
             {
                 throw new ValueOutOfRangeException(
                     "number of doors",
@@ -63,9 +64,10 @@ namespace Ex03.GarageLogic.VhicleCreator
                 throw new FormatException("The numbers of doors input was not a number");
             }
 
-            if (colorInt < 1 || colorInt > Enum.GetValues(typeof(Car.eColor)).Length)
+            if (colorInt < (int)Enum.GetValues(typeof(Car.eColor)).GetValue(0) || colorInt > Enum.GetValues(typeof(Car.eColor)).Length)
             {
-                throw new ValueOutOfRangeException("Color", colorInt, Enum.GetValues(typeof(Car.eColor)).Length, 1);
+                throw new ValueOutOfRangeException("Color", colorInt, (int)Enum.GetValues(typeof(Car.eColor)).GetValue(0), 
+                    Enum.GetValues(typeof(Car.eColor)).Length);
             }
 
             return (Car.eColor) colorInt;
