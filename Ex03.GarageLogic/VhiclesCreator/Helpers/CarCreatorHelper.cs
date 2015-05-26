@@ -49,7 +49,8 @@ namespace Ex03.GarageLogic.VhicleCreator
                 throw new ValueOutOfRangeException(
                     "number of doors",
                     numOfDoorsInt, 
-                    Enum.GetValues(typeof(Car.eNumOfDoors)).Length,1 );
+                    1,
+                    Enum.GetValues(typeof(Car.eNumOfDoors)).Length );
             }
 
             return (Car.eNumOfDoors) numOfDoorsInt;
