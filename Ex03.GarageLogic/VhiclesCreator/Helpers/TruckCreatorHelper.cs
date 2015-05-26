@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic.VhicleCreator
         {
             if (i_DangerousStr != "1" && i_DangerousStr != "2")
             {
-                throw new FormatException("The input for Dangerous matirials is not valid");
+                throw new FormatException("The input for Dangerous matirials is not a number in the range");
             }
 
             return i_DangerousStr == "1";

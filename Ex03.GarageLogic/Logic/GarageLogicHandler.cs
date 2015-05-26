@@ -76,11 +76,9 @@ namespace Ex03.GarageLogic.Logic
 
         public Fueled.eFuelType IntToFuelType(int i_FuelTypeInt)
         {
-            if (i_FuelTypeInt < (int)Enum.GetValues(typeof(Fueled.eFuelType)).GetValue(0) ||
-                i_FuelTypeInt > Enum.GetValues(typeof(Fueled.eFuelType)).Length)
+            if (i_FuelTypeInt < 1 || i_FuelTypeInt > Enum.GetValues(typeof(Fueled.eFuelType)).Length)
             {
-                throw new ValueOutOfRangeException("fuel type", i_FuelTypeInt + 1, (int)Enum.GetValues(typeof(Fueled.eFuelType)).GetValue(0),
-                    Enum.GetValues(typeof(Fueled.eFuelType)).Length);
+                throw new ValueOutOfRangeException("fuel type", i_FuelTypeInt, 1, Enum.GetValues(typeof(Fueled.eFuelType)).Length);
             }
 
             return (Fueled.eFuelType) i_FuelTypeInt;
@@ -88,11 +86,9 @@ namespace Ex03.GarageLogic.Logic
 
         public CustomerCard.eStatus IntToStateType(int i_StateTypeInt)
         {
-            if (i_StateTypeInt < (int)Enum.GetValues(typeof(CustomerCard.eStatus)).GetValue(0)
-                || i_StateTypeInt > Enum.GetValues(typeof(CustomerCard.eStatus)).Length)
+            if (i_StateTypeInt < 1 || i_StateTypeInt > Enum.GetValues(typeof(CustomerCard.eStatus)).Length)
             {
-                throw new ValueOutOfRangeException(i_StateTypeInt, (int)Enum.GetValues(typeof(CustomerCard.eStatus)).GetValue(0), 
-                    Enum.GetValues(typeof(CustomerCard.eStatus)).Length);
+                throw new ValueOutOfRangeException(i_StateTypeInt, 1, Enum.GetValues(typeof(CustomerCard.eStatus)).Length);
             }
 
             return (CustomerCard.eStatus)i_StateTypeInt;
