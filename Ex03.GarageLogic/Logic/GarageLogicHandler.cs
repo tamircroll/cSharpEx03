@@ -86,9 +86,9 @@ namespace Ex03.GarageLogic.Logic
 
         public CustomerCard.eStatus IntToStateType(int i_StateTypeInt)
         {
-            if (i_StateTypeInt < 0 || i_StateTypeInt >= Enum.GetValues(typeof(CustomerCard.eStatus)).Length)
+            if (i_StateTypeInt < 1 || i_StateTypeInt > Enum.GetValues(typeof(CustomerCard.eStatus)).Length)
             {
-                throw new ValueOutOfRangeException(i_StateTypeInt + 1, 1, Enum.GetValues(typeof(CustomerCard.eStatus)).Length);
+                throw new ValueOutOfRangeException(i_StateTypeInt, 1, Enum.GetValues(typeof(CustomerCard.eStatus)).Length);
             }
 
             return (CustomerCard.eStatus)i_StateTypeInt;

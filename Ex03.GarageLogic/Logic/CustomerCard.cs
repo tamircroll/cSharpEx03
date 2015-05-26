@@ -53,9 +53,9 @@ Status: {3}
 
         public enum eStatus
         {
-            Repairing = 0,
-            Repaired = 1,
-            Paid = 2
+            Repairing = 1,
+            Repaired = 2,
+            Paid = 3
         }
     }
 }

@@ -188,7 +188,6 @@ Please press 'B' to go back to menu or any other thing to try again.",
                         throw new FormatException("The input is not a number");
                     }
 
-                    statusInt--;
                     CustomerCard.eStatus statusType = i_Logic.IntToStateType(statusInt);
                     i_Logic.ChangeStatus(plate, statusType);
                     Console.WriteLine("Status Changed to {0}", statusType);
