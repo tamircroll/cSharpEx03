@@ -27,10 +27,10 @@
 
         public enum eLicense
         {
-            A,
-            A2,
-            AB,
-            B1
+            A = 1,
+            A2 = 2,
+            AB = 3,
+            B1 = 4
         }
 
         public override string ToString()

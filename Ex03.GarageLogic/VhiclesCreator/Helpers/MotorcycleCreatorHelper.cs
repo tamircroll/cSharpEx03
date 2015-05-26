@@ -28,8 +28,7 @@ namespace Ex03.GarageLogic.VhicleCreator
                 throw new ValueOutOfRangeException(
                     "license",
                     licenseInt,
-                    Enum.GetValues(typeof(Motorcycle.eLicense)).Length - 1,
-                    0);
+                    Enum.GetValues(typeof(Motorcycle.eLicense)).Length, 1);
             }
 
             return (Motorcycle.eLicense)licenseInt;
