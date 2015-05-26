@@ -27,10 +27,10 @@
 
         public enum eColor : byte
         {
-            Green,
-            Black,
-            White,
-            Red
+            Green = 1,
+            Black = 2,
+            White = 3,
+            Red = 4
         }
 
         public enum eNumOfDoors : byte
