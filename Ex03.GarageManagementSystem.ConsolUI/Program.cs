@@ -27,7 +27,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     case k_insertVehicle:
                     {
-                        GarageUiHandler.InsertNewCarOrChangeToRepairing(logic);
+                        GarageUiHandler.InsertNewVehicleOrChangeToRepairing(logic);
                         break;
                     }
                     case k_ShowAllPlates:
@@ -74,7 +74,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             {
                 Console.WriteLine(String.Format(
 @"{0}
-1. Insert a new vehicle or cahnge an existing car to repairing state.
+1. Insert a new vehicle or cahnge an existing vehicle to repairing state.
 2. Show all vehicles plates numbers.
 3. Change vehicle state.
 4. Inflate wheels to maximum.

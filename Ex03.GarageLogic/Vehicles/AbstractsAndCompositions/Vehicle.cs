@@ -50,10 +50,10 @@ namespace Ex03.GarageLogic
             get { return m_IsElectric; }
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object i_Obj)
         {
             bool isEqual = false;
-            Vehicle vehicle = obj as Vehicle;
+            Vehicle vehicle = i_Obj as Vehicle;
 
             if (vehicle != null)
             {

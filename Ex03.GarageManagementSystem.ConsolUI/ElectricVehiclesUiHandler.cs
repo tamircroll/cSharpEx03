@@ -33,19 +33,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 }
                 catch (Exception e)
                 {
-                    string msg = e.Message;
-
-                    if (e.InnerException != null)
-                    {
-                        msg = e.InnerException.Message;
-                    }
-
-                    Console.WriteLine(
-@"{0}.
-Please press 'B' and Enter to go back to menu or just Enter to try again.",
-                                                                     msg);
-                    string choice = Console.ReadLine().ToLower();
-
+                    string choice = GarageUiHandler.ExceptionPrintMsg(e);
                     if (choice == "b")
                     {
                         break;

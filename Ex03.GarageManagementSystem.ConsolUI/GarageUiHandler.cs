@@ -8,7 +8,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public static class GarageUiHandler
     {
-        public static void InsertNewCarOrChangeToRepairing(GarageLogicHandler i_Logic)
+        public static void InsertNewVehicleOrChangeToRepairing(GarageLogicHandler i_Logic)
         {
             while (true)
             {
@@ -21,42 +21,12 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     {
                         i_Logic.ChangeStatus(plate, CustomerCard.eStatus.Repairing);
                         Console.Clear();
-                        Console.WriteLine("Car with plate {0} changed to 'Repairing' state", plate);
+                        Console.WriteLine("Vehicle with plate {0} changed to 'Repairing' state", plate);
                     }
                     else
                     {
-                        Console.WriteLine("Please choose the type of car you want to insert:");
-                        foreach (KeyValuePair<int, string> vehicle in VehicleCreatorFactory.SupportedVehicles)
-                        {
-                            Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
-                        }
-
-                        string vehicleIndexStr = Console.ReadLine();
-                        int vehicleIndex;
-
-                        bool isNumber = int.TryParse(vehicleIndexStr, out vehicleIndex);
-
-                        if (!isNumber)
-                        {
-                            throw new ArgumentException("The input is not a number");
-                        }
-
-                        VehicleCreator vehicleCreator = VehicleCreatorFactory.Create(vehicleIndex);
-                        List<string> paramsQuestions = new List<string>(vehicleCreator.ParamsDic.Keys);
-
-                        foreach (string param in paramsQuestions)
-                        {
-                            if (param == VehicleCreator.k_PlateNumber)
-                            {
-                                vehicleCreator.ParamsDic[param] = plate;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Please Choose {0}", param);
-                                vehicleCreator.ParamsDic[param] = Console.ReadLine();
-                            }
-                        }
-
+                        VehicleCreator vehicleCreator = getVehicleCreatorFromUser();
+                        initVehicleCreatorParams(vehicleCreator, plate);
                         CustomerCard customerCard = vehicleCreator.InsertVehicle();
                         Console.Clear();
                         i_Logic.InsertCustomerCard(customerCard);
@@ -69,18 +39,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 }
                 catch (Exception e)
                 {
-                    string msg = e.Message;
-                    if (e.InnerException != null)
-                    {
-                        msg = e.InnerException.Message;
-                    }
-
-                    Console.WriteLine(
-@"{0}.
-Please press 'B' and Enter to go back to menu or just Enter to try again.",
-                                                                     msg);
-                    string choice = Console.ReadLine().ToLower();
-
+                    string choice = ExceptionPrintMsg(e);
                     if (choice == "b")
                     {
                         break;
@@ -128,18 +87,7 @@ Please press 'B' and Enter to go back to menu or just Enter to try again.",
                 }
                 catch (Exception e)
                 {
-                    string msg = e.Message;
-                    if (e.InnerException != null)
-                    {
-                        msg = e.InnerException.Message;
-                    }
-
-                    Console.WriteLine(
-@"{0}.
-Please press 'B' and Enter to go back to menu or just Enter to try again.", 
-                                                                     msg);
-                    string choice = Console.ReadLine().ToLower();
-
+                    string choice = ExceptionPrintMsg(e);
                     if (choice == "b")
                     {
                         break;
@@ -166,18 +114,7 @@ Please press 'B' and Enter to go back to menu or just Enter to try again.",
                 }
                 catch (Exception e)
                 {
-                    string msg = e.Message;
-
-                    if (e.InnerException != null)
-                    {
-                        msg = e.InnerException.Message;
-                    }
-
-                    Console.WriteLine(
-@"{0}.
-Please press 'B' and Enter to go back to menu or just Enter to try again.", 
-                                                                     msg);
-                    string choice = Console.ReadLine().ToLower();
+                    string choice = ExceptionPrintMsg(e);
                     if (choice == "b")
                     {
                         break;
@@ -216,17 +153,7 @@ Please press 'B' and Enter to go back to menu or just Enter to try again.",
                 }
                 catch (Exception e)
                 {
-                    string msg = e.Message;
-                    if (e.InnerException != null)
-                    {
-                        msg = e.InnerException.Message;
-                    }
-
-                    Console.WriteLine(
-                        @"{0}.
-Please press 'B' and Enter to go back to menu or just Enter to try again.", 
-                                                                     msg);
-                    string choice = Console.ReadLine().ToLower();
+                    string choice = ExceptionPrintMsg(e);
                     if (choice == "b")
                     {
                         break;
@@ -249,23 +176,68 @@ Please press 'B' and Enter to go back to menu or just Enter to try again.",
                 }
                 catch (Exception e)
                 {
-                    string msg = e.Message;
-                    if (e.InnerException != null)
-                    {
-                        msg = e.InnerException.Message;
-                    }
-
-                    Console.WriteLine(
-                        @"{0}.
-Please press 'B' and Enter to go back to menu or just Enter to try again.",
-                                                                     msg);
-                    string choice = Console.ReadLine().ToLower();
+                    string choice = ExceptionPrintMsg(e);
                     if (choice == "b")
                     {
                         break;
                     }
                 }
             }
+        }
+
+        private static VehicleCreator getVehicleCreatorFromUser()
+        {
+            Console.WriteLine("Please choose the type of car you want to insert:");
+            foreach (KeyValuePair<int, string> vehicle in VehicleCreatorFactory.SupportedVehicles)
+            {
+                Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
+            }
+
+            string vehicleIndexStr = Console.ReadLine();
+            int vehicleIndex;
+
+            bool isNumber = int.TryParse(vehicleIndexStr, out vehicleIndex);
+
+            if (!isNumber)
+            {
+                throw new ArgumentException("The input is not a number");
+            }
+
+            return VehicleCreatorFactory.Create(vehicleIndex);
+        }
+
+        private static void initVehicleCreatorParams(VehicleCreator i_VehicleCreator, string i_Plate)
+        {
+            List<string> paramsQuestions = new List<string>(i_VehicleCreator.ParamsDic.Keys);
+
+            foreach (string param in paramsQuestions)
+            {
+                if (param == VehicleCreator.k_PlateNumber)
+                {
+                    i_VehicleCreator.ParamsDic[param] = i_Plate;
+                }
+                else
+                {
+                    Console.WriteLine("Please Choose {0}", param);
+                    i_VehicleCreator.ParamsDic[param] = Console.ReadLine();
+                }
+            }
+        }
+
+        internal static string ExceptionPrintMsg(Exception e)
+        {
+            string msg = e.Message;
+            if (e.InnerException != null)
+            {
+                msg = e.InnerException.Message;
+            }
+
+            Console.WriteLine(
+                @"{0}.
+Please press 'B' and Enter to go back to menu or just Enter to try again.",
+                msg);
+            string choice = Console.ReadLine().ToLower();
+            return choice;
         }
     }
 }

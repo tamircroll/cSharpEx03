@@ -18,14 +18,14 @@
             m_MaxAirPressure = i_MaxAirPressure;
         }
 
-        public void InflatWheel(float toInflate)
+        public void InflatWheel(float i_ToInflate)
         {
-            if (toInflate + AirPressure > MaxAirPressure)
+            if (i_ToInflate + AirPressure > MaxAirPressure)
             {
-                throw new ValueOutOfRangeException("air pressure", toInflate + AirPressure, MaxAirPressure, 0);
+                throw new ValueOutOfRangeException("air pressure", i_ToInflate + AirPressure, MaxAirPressure, 0);
             }
 
-            m_AirPressure += toInflate;
+            m_AirPressure += i_ToInflate;
         }
 
         public string Manufacturer
