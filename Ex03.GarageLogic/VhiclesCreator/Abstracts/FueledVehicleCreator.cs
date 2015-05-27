@@ -4,7 +4,7 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
 {
     public abstract class FueledVehicleCreator : VehicleCreator
     {
-        private const string k_MountOfFuel = "Mount Of Fuel";
+        public const string k_MountOfFuel = "Mount Of Fuel";
         protected float m_MountOfFuel;
 
         protected override void AddEngineParams()

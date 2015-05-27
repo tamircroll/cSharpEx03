@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic.VhicleCreator
 
     public class FueledMotorcycleCreator : FueledVehicleCreator
     {
-        protected const string k_Engine = "Engine";
+        public const string k_Engine = "Engine";
         protected Motorcycle.eLicense m_License;
         protected int m_Engine;
         protected string m_LicenseStr = setLicenseField();

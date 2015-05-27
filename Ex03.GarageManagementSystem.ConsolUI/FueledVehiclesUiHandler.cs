@@ -1,5 +1,4 @@
 ﻿using System;
-using Ex02.ConsoleUtils;
 using Ex03.GarageLogic.Logic;
 using Ex03.GarageLogic.Vehicles;
 
@@ -17,7 +16,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             {
                 int fuelTypeIndex = 1;
 
-                Screen.Clear();
+                Console.Clear();
                 Console.WriteLine("Please enter required plate numer");
                 plateNumber = Console.ReadLine();
                 try
@@ -66,7 +65,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
                     Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.",
+Please press 'B' and Enter to go back to menu or just Enter to try again.",
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
 

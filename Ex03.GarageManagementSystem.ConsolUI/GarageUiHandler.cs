@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ex02.ConsoleUtils;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Logic;
 using Ex03.GarageLogic.Logic.VhicleCreator;
@@ -9,42 +8,63 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 {
     public static class GarageUiHandler
     {
-        public static void InsertNewCar(GarageLogicHandler i_Logic)
+        public static void InsertNewCarOrChangeToRepairing(GarageLogicHandler i_Logic)
         {
             while (true)
             {
                 try
                 {
-                    Screen.Clear();
-                    Console.WriteLine("Please choose the type of car you want to insert:");
-                    foreach (KeyValuePair<int, string> vehicle in VehicleCreatorFactory.SupportedVehicles)
+                    Console.Clear();
+                    Console.WriteLine("Please Enter plate number:");
+                    string plate = Console.ReadLine();
+                    if (i_Logic.isInGarage(plate))
                     {
-                        Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
+                        i_Logic.ChangeStatus(plate, CustomerCard.eStatus.Repairing);
+                        Console.Clear();
+                        Console.WriteLine("Car with plate {0} changed to 'Repairing' state", plate);
                     }
-                    string vehicleIndexStr = Console.ReadLine();
-                    int vehicleIndex;
-
-                    bool isNumber = int.TryParse(vehicleIndexStr, out vehicleIndex);
-
-                    if (!isNumber)
+                    else
                     {
-                        throw new ArgumentException("The input is not a number in the range");
+                        Console.WriteLine("Please choose the type of car you want to insert:");
+                        foreach (KeyValuePair<int, string> vehicle in VehicleCreatorFactory.SupportedVehicles)
+                        {
+                            Console.WriteLine("{0}. {1}", vehicle.Key, vehicle.Value);
+                        }
+
+                        string vehicleIndexStr = Console.ReadLine();
+                        int vehicleIndex;
+
+                        bool isNumber = int.TryParse(vehicleIndexStr, out vehicleIndex);
+
+                        if (!isNumber)
+                        {
+                            throw new ArgumentException("The input is not a number");
+                        }
+
+                        VehicleCreator vehicleCreator = VehicleCreatorFactory.Create(vehicleIndex);
+                        List<string> paramsQuestions = new List<string>(vehicleCreator.ParamsDic.Keys);
+
+                        foreach (string param in paramsQuestions)
+                        {
+                            if (param == VehicleCreator.k_PlateNumber)
+                            {
+                                vehicleCreator.ParamsDic[param] = plate;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please Choose {0}", param);
+                                vehicleCreator.ParamsDic[param] = Console.ReadLine();
+                            }
+                        }
+
+                        CustomerCard customerCard = vehicleCreator.InsertVehicle();
+                        Console.Clear();
+                        i_Logic.InsertCustomerCard(customerCard);
+                        Console.WriteLine("Vehicle added");
                     }
 
-                    VehicleCreator c = VehicleCreatorFactory.Create(vehicleIndex);
-                    List<string> paramsQuestions = new List<string>(c.ParamsDic.Keys);
-
-                    foreach (string param in paramsQuestions)
-                    {
-                        Console.WriteLine("Please Choose {0}", param);
-                        c.ParamsDic[param] = Console.ReadLine();
-                    }
-
-                    CustomerCard customerCard = c.InsertVehicle();
-                    Screen.Clear();
-                    Console.WriteLine(i_Logic.InsertCustomerCard(customerCard));
-                    
                     Console.ReadLine();
+
                     break;
                 }
                 catch (Exception e)
@@ -57,7 +77,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
                     Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.",
+Please press 'B' and Enter to go back to menu or just Enter to try again.",
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
 
@@ -75,7 +95,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             {
                 int filterBy;
 
-                Screen.Clear();
+                Console.Clear();
                 try
                 {
                     bool toShowRepairing, toShowRepaired, toShowPaid;
@@ -101,7 +121,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
                     toShowRepaired = filterBy == 1 || filterBy == 3;
                     toShowPaid = filterBy == 1 || filterBy == 4;
 
-                    Screen.Clear();
+                    Console.Clear();
                     Console.WriteLine(i_Logic.showPlates(toShowRepairing, toShowRepaired, toShowPaid));
                     Console.ReadLine();
                     break;
@@ -116,7 +136,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
 
                     Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", 
+Please press 'B' and Enter to go back to menu or just Enter to try again.", 
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
 
@@ -134,12 +154,12 @@ Please press 'B' to go back to menu or any other thing to try again.",
             {
                 try
                 {
-                    Screen.Clear();
+                    Console.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
                     string allDetails = i_Logic.ShowAllVehicleDetails(plate);
 
-                    Screen.Clear();
+                    Console.Clear();
                     Console.WriteLine(allDetails);
                     Console.ReadLine();
                     break;
@@ -155,7 +175,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
 
                     Console.WriteLine(
 @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", 
+Please press 'B' and Enter to go back to menu or just Enter to try again.", 
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "b")
@@ -172,7 +192,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             {
                 try
                 {
-                    Screen.Clear();
+                    Console.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
                     Console.WriteLine(
@@ -204,7 +224,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
 
                     Console.WriteLine(
                         @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.", 
+Please press 'B' and Enter to go back to menu or just Enter to try again.", 
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "b")
@@ -221,7 +241,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
             {
                 try
                 {
-                    Screen.Clear();
+                    Console.Clear();
                     Console.WriteLine("Please enter the required Plate Number");
                     string plate = Console.ReadLine();
                     i_Logic.InflateWheels(plate);
@@ -237,7 +257,7 @@ Please press 'B' to go back to menu or any other thing to try again.",
 
                     Console.WriteLine(
                         @"{0}.
-Please press 'B' to go back to menu or any other thing to try again.",
+Please press 'B' and Enter to go back to menu or just Enter to try again.",
                                                                      msg);
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "b")

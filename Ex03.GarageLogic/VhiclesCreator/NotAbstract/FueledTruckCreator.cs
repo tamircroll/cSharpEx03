@@ -6,8 +6,8 @@ namespace Ex03.GarageLogic.VhicleCreator
 {
     public class FueledTruckCreator : FueledVehicleCreator
     {
-        protected const string k_CarryWeight = "how much weight the truck is carrying";
-        protected const string k_DangerousMatirials = @"Dangerous Matirial:
+        public const string k_CarryWeight = "how much weight the truck is carrying";
+        public const string k_DangerousMatirials = @"Dangerous Matirial:
 1. Carrying
 2. Not Carrying";
 

@@ -6,12 +6,12 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
 {
     public abstract class VehicleCreator
     {
-        protected const string k_Owners = "Owners";
-        protected const string k_Phone = "Phone";
-        protected const string k_Model = "Model";
-        protected const string k_PlateNumber = "Plate number";
-        protected const string k_Manufacturer = "Wheel manufacturer";
-        protected const string k_AirPressure = "Current air pressure";
+        public const string k_Owners = "Owners";
+        public const string k_Phone = "Phone";
+        public const string k_Model = "Model";
+        public const string k_Manufacturer = "Wheel manufacturer";
+        public const string k_AirPressure = "Current air pressure";
+        public const string k_PlateNumber = "Plate number";
         protected string m_Owners;
         protected string m_Phone;
         protected string m_Model;
@@ -29,10 +29,10 @@ namespace Ex03.GarageLogic.Logic.VhicleCreator
 
         private void addVehicleParams()
         {
+            ParamsDic.Add(k_PlateNumber, null);
             ParamsDic.Add(k_Owners, null);
             ParamsDic.Add(k_Phone, null);
             ParamsDic.Add(k_Model, null);
-            ParamsDic.Add(k_PlateNumber, null);
             ParamsDic.Add(k_Manufacturer, null);
             ParamsDic.Add(k_AirPressure, null);
         }

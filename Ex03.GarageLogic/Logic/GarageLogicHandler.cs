@@ -26,26 +26,19 @@ namespace Ex03.GarageLogic.Logic
             return customerCard;
         }
 
+        public bool isInGarage(string i_plateNumber)
+        {
+            return r_AllVehicles.ContainsKey(i_plateNumber);
+        }
+
         public Vehicle GetVehicle(string i_Plate)
         {
             return GetCustomerCard(i_Plate).Vehicle;
         }
 
-        public string InsertCustomerCard(CustomerCard i_CustomerCard)
+        public void InsertCustomerCard(CustomerCard i_CustomerCard)
         {
-            string msg = string.Format("Car with plate {0} added", i_CustomerCard.Vehicle.PlateNumber);
-
-            if (r_AllVehicles.ContainsKey(i_CustomerCard.Vehicle.PlateNumber))
-            {
-                GetCustomerCard(i_CustomerCard.Vehicle.PlateNumber).Status = CustomerCard.eStatus.Repairing;
-                msg = string.Format("Car with plate {0} changed to 'Repairing' state", i_CustomerCard.Vehicle.PlateNumber);
-            }
-            else
-            {
-                r_AllVehicles.Add(i_CustomerCard.Vehicle.PlateNumber, i_CustomerCard);
-            }
-
-            return msg;
+            r_AllVehicles.Add(i_CustomerCard.Vehicle.PlateNumber, i_CustomerCard);
         }
 
         public void FillFuel(string i_Plate, float i_ToFill, Fueled.eFuelType i_FuelType)

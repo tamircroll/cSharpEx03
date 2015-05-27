@@ -1,5 +1,4 @@
-﻿using Ex02.ConsoleUtils;
-using Ex03.GarageLogic.Logic;
+﻿using Ex03.GarageLogic.Logic;
 
 namespace Ex03.GarageManagementSystem.ConsolUI
 {
@@ -28,7 +27,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                 {
                     case k_insertVehicle:
                     {
-                        GarageUiHandler.InsertNewCar(logic);
+                        GarageUiHandler.InsertNewCarOrChangeToRepairing(logic);
                         break;
                     }
                     case k_ShowAllPlates:
@@ -67,7 +66,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
 
         public static int ChooseAction()
         {
-            Screen.Clear();
+            Console.Clear();
             string choiseStr, msg = "Please choose the action you like to perform and press Enter:";
             char choise;
 
@@ -75,7 +74,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             {
                 Console.WriteLine(String.Format(
 @"{0}
-1. Insert a new vehicle.
+1. Insert a new vehicle or cahnge an existing car to repairing state.
 2. Show all vehicles plates numbers.
 3. Change vehicle state.
 4. Inflate wheels to maximum.
@@ -94,7 +93,7 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                 }
 
-                Screen.Clear();
+                Console.Clear();
                 msg = "invalid input, please choose again:";
             }
 

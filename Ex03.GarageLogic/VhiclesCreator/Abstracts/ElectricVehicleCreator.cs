@@ -5,7 +5,7 @@ namespace Ex03.GarageLogic.VhicleCreator
 {
     public abstract class ElectricVehicleCreator : VehicleCreator
     {
-        private const string k_BatteryMinutesRemain = "battery minutes remains";
+        public const string k_BatteryMinutesRemain = "battery minutes remains";
         protected float m_BatteryMinutesRemain;
 
         protected override void AddEngineParams()
