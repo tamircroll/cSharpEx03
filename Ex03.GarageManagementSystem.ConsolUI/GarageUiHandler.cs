@@ -12,25 +12,18 @@ namespace Ex03.GarageManagementSystem.ConsolUI
         {
             while (true)
             {
+                Console.Clear();
                 try
                 {
-                    Console.Clear();
                     Console.WriteLine("Please Enter plate number:");
                     string plate = Console.ReadLine();
                     if (i_Logic.isInGarage(plate))
                     {
-                        i_Logic.ChangeStatus(plate, CustomerCard.eStatus.Repairing);
-                        Console.Clear();
-                        Console.WriteLine("Vehicle with plate {0} changed to 'Repairing' state", plate);
+                        changeStatusToRepairing(i_Logic, plate);
                     }
                     else
                     {
-                        VehicleCreator vehicleCreator = getVehicleCreatorFromUser();
-                        initVehicleCreatorParams(vehicleCreator, plate);
-                        CustomerCard customerCard = vehicleCreator.InsertVehicle();
-                        Console.Clear();
-                        i_Logic.InsertCustomerCard(customerCard);
-                        Console.WriteLine("Vehicle added");
+                        createVehicle(i_Logic, plate);
                     }
 
                     Console.ReadLine();
@@ -224,12 +217,12 @@ namespace Ex03.GarageManagementSystem.ConsolUI
             }
         }
 
-        internal static string ExceptionPrintMsg(Exception e)
+        internal static string ExceptionPrintMsg(Exception i_Exception)
         {
-            string msg = e.Message;
-            if (e.InnerException != null)
+            string msg = i_Exception.Message;
+            if (i_Exception.InnerException != null)
             {
-                msg = e.InnerException.Message;
+                msg = i_Exception.InnerException.Message;
             }
 
             Console.WriteLine(
@@ -238,6 +231,23 @@ Please press 'B' and Enter to go back to menu or just Enter to try again.",
                 msg);
             string choice = Console.ReadLine().ToLower();
             return choice;
+        }
+
+        private static void createVehicle(GarageLogicHandler i_Logic, string i_Plate)
+        {
+            VehicleCreator vehicleCreator = getVehicleCreatorFromUser();
+            initVehicleCreatorParams(vehicleCreator, i_Plate);
+            CustomerCard customerCard = vehicleCreator.InsertVehicle();
+            Console.Clear();
+            i_Logic.InsertCustomerCard(customerCard);
+            Console.WriteLine("Vehicle added");
+        }
+
+        private static void changeStatusToRepairing(GarageLogicHandler i_Logic, string i_Plate)
+        {
+            i_Logic.ChangeStatus(i_Plate, CustomerCard.eStatus.Repairing);
+            Console.Clear();
+            Console.WriteLine("Vehicle with plate {0} changed to 'Repairing' state", i_Plate);
         }
     }
 }
