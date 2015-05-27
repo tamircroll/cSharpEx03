@@ -37,7 +37,6 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                         throw new FormatException("The Entered fuel type value is not a number");
                     }
 
-                    fuelTypeValue--;
                     fuelType = i_Logic.IntToFuelType(fuelTypeValue);
 
                     Console.WriteLine("Please enter how many liters of fuel you would like to fill:");

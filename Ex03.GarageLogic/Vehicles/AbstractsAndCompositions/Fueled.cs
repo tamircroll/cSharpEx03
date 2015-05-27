@@ -74,10 +74,10 @@ Max fuel: {2} liters",
 
         public enum eFuelType : byte
         {
-            Soler = 0,
-            Octan95 = 1,
-            Octan96 = 2,
-            Octan98 = 3
+            Soler = 1,
+            Octan95 = 2,
+            Octan96 = 3,
+            Octan98 = 4
         }
     }
 }
