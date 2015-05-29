@@ -8,8 +8,6 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void UiFuelUp(GarageLogicHandler i_Logic)
         {
-            float mountToFill;
-
             while (true)
             {
                 try
@@ -17,8 +15,8 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     Console.Clear();
                     Console.WriteLine("Please enter required plate numer");
                     string plateNumber = Console.ReadLine();
-                    var fuelType = getFuelTypeFromUser(i_Logic);
-                    mountToFill = getMountToFillFromUser();
+                    Fueled.eFuelType fuelType = getFuelTypeFromUser(i_Logic);
+                    float mountToFill = getMountToFillFromUser();
                     i_Logic.FillFuel(plateNumber, mountToFill, fuelType);
                     Console.WriteLine("Fuel was successfully filled");
                     Console.ReadLine();

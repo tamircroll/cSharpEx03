@@ -7,25 +7,14 @@ namespace Ex03.GarageManagementSystem.ConsolUI
     {
         public static void Charge(GarageLogicHandler i_Logic)
         {
-            string plateNumber;
-            float minutesToFill;
-
             while (true)
             {
                 Console.Clear();
                 Console.WriteLine("Please enter required plate numer");
-                plateNumber = Console.ReadLine();
+                string plateNumber = Console.ReadLine();
                 try
                 {
-                    Console.WriteLine("Please enter how many minutes you would like to charge:");
-                    string minutesToFillStr = Console.ReadLine();
-
-                    bool isNumber = float.TryParse(minutesToFillStr, out minutesToFill);
-                    if (!isNumber)
-                    {
-                        throw new FormatException("The Entered mount of liters is not a number");
-                    }
-
+                    float minutesToFill = getMinutesToFill();
                     i_Logic.ChargeBattery(plateNumber, minutesToFill);
                     Console.WriteLine("Battery was successfully charged");
                     Console.ReadLine();
@@ -40,6 +29,21 @@ namespace Ex03.GarageManagementSystem.ConsolUI
                     }
                 }
             }
+        }
+
+        private static float getMinutesToFill()
+        {
+            float minutesToFill;
+            Console.WriteLine("Please enter how many minutes you would like to charge:");
+            string minutesToFillStr = Console.ReadLine();
+
+            bool isNumber = float.TryParse(minutesToFillStr, out minutesToFill);
+            if (!isNumber)
+            {
+                throw new FormatException("The Entered time to charge is not a number");
+            }
+
+            return minutesToFill;
         }
     }
 }

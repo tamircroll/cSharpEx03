@@ -68,7 +68,7 @@
 Fuel type: {1}
 Max fuel: {2} liters",
               LitersOfFuel,
-              FuelType.ToString(),
+              FuelType,
               MaxFuel);
         }
 

@@ -26,9 +26,14 @@ namespace Ex03.GarageLogic.Logic
             return customerCard;
         }
 
-        public bool isInGarage(string i_plateNumber)
+        public bool isInGarage(string i_PlateNumber)
         {
-            return r_AllVehicles.ContainsKey(i_plateNumber);
+            if (i_PlateNumber == null)
+            {
+                throw new FormatException("Plate number can't be an empty string");
+            }
+
+            return r_AllVehicles.ContainsKey(i_PlateNumber);
         }
 
         public Vehicle GetVehicle(string i_Plate)
@@ -146,6 +151,7 @@ namespace Ex03.GarageLogic.Logic
         {
             Vehicle curVehicle = GetVehicle(i_Plate);
             List<Wheel> curWheels = curVehicle.Wheels;
+            
             foreach (Wheel wheel in curWheels)
             {
                 float toInflate = wheel.MaxAirPressure - wheel.AirPressure;
